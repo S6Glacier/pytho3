@@ -1,0 +1,5 @@
+name: Flake Check
+
+on:
+  push:
+    bra
