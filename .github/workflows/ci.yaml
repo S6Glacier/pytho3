@@ -4,4 +4,7 @@ on:
   push:
     branches:
       - '*'
-  pull_re
+  pull_request:
+    branches: [ main ]
+
+jobs:
