@@ -10,4 +10,6 @@ on:
 jobs:
   flake-check:
 
-    runs-on: ${{ m
+    runs-on: ${{ matrix.os }}
+    
+    strategy
