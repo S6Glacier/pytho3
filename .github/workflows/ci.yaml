@@ -24,4 +24,5 @@ jobs:
     - name: Install Cachix
       uses: cachix/cachix-action@v10
       with:
-        name: indie
+        name: indieweb-tools
+        authToken: ${
