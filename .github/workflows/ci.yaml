@@ -23,4 +23,5 @@ jobs:
       uses: cachix/install-nix-action@v17
     - name: Install Cachix
       uses: cachix/cachix-action@v10
-  
+      with:
+        name: indie
