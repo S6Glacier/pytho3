@@ -845,3 +845,25 @@ dependencies = [
  "log",
  "mac",
  "markup5ever",
+ "proc-macro2",
+ "quote",
+ "syn",
+]
+
+[[package]]
+name = "http"
+version = "0.2.8"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "75f43d41e26995c17e71ee126451dd3941010b0514a81a9d11f3b341debc2399"
+dependencies = [
+ "bytes",
+ "fnv",
+ "itoa 1.0.3",
+]
+
+[[package]]
+name = "http-body"
+version = "0.4.5"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d5f38f16d184e36f2408a55281cd658ecbd3ca05cce6d6510a176eca393e26d1"
+dependencies = [
