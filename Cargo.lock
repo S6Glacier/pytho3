@@ -1015,3 +1015,41 @@ dependencies = [
 
 [[package]]
 name = "ipnet"
+version = "2.5.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f88c5561171189e69df9d98bcf18fd5f9558300f7ea7b801eb8a0fd748bd8745"
+
+[[package]]
+name = "itoa"
+version = "0.4.8"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b71991ff56294aa922b450139ee08b3bfc70982c6b2c7562771375cf73542dd4"
+
+[[package]]
+name = "itoa"
+version = "1.0.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "6c8af84674fe1f223a982c933a0ee1086ac4d4052aa0fb8060c12c6ad838e754"
+
+[[package]]
+name = "iwt"
+version = "0.1.0"
+dependencies = [
+ "async-mutex",
+ "async-trait",
+ "axum",
+ "base64",
+ "clap",
+ "convert_case 0.6.0",
+ "futures",
+ "log",
+ "oauth2",
+ "rand 0.8.5",
+ "regex",
+ "reqwest",
+ "rss",
+ "rusqlite",
+ "scraper",
+ "serde",
+ "serde_derive",
+ "serde_json",
