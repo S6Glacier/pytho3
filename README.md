@@ -40,3 +40,10 @@ domain = "short.domain"
 
 ```bash
 $ nix run .#iwt -- --config indieweb.toml app-auth twitter
+```
+
+3) Syndicate posts to Twitter and Mastodon
+
+```bash
+$ nix run .#iwt -- --config indieweb.toml cross-publish
+```
