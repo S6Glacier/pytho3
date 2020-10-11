@@ -23,3 +23,4 @@ pub async fn execute(
             .map_err(|e| Box::new(e) as Box<dyn std::error::Error>),
         AuthSubcommand::Mastodon => todo!(),
     }
+}
