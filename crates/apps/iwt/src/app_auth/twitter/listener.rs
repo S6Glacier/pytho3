@@ -20,4 +20,6 @@ use crate::config::Config;
 
 struct State {
     challenge: String,
-    oauth_state: Str
+    oauth_state: String,
+    client_id: String,
+    s
