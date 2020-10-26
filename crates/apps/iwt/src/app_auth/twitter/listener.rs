@@ -19,4 +19,5 @@ use super::Error;
 use crate::config::Config;
 
 struct State {
-    challen
+    challenge: String,
+    oauth_state: Str
