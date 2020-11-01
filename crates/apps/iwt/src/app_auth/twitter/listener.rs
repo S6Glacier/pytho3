@@ -22,4 +22,5 @@ struct State {
     challenge: String,
     oauth_state: String,
     client_id: String,
-    s
+    shutdown_signal: Sender<()>,
+    db_pat
