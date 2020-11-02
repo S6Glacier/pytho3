@@ -26,4 +26,4 @@ struct State {
     db_path: String,
 }
 
-pub asyn
+pub async fn start(config: &Config, challeng
