@@ -26,4 +26,5 @@ struct State {
     db_path: String,
 }
 
-pub async fn start(config: &Config, challenge: &str, csrf_state: &str) -
+pub async fn start(config: &Config, challenge: &str, csrf_state: &str) -> Result<(), Error> {
+    // Cr
