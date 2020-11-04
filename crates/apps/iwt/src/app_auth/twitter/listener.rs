@@ -27,4 +27,4 @@ struct State {
 }
 
 pub async fn start(config: &Config, challenge: &str, csrf_state: &str) -> Result<(), Error> {
-    // Cr
+    // Create a channel to be able to shu
