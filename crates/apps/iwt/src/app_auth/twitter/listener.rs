@@ -29,4 +29,6 @@ struct State {
 pub async fn start(config: &Config, challenge: &str, csrf_state: &str) -> Result<(), Error> {
     // Create a channel to be able to shut down the webserver from the
     // Request handler after receiving the auth code
-    let (tx, mut rx) = tokio::sync::mpsc::chann
+    let (tx, mut rx) = tokio::sync::mpsc::channel::<()>(10);
+
+    // Initial
