@@ -31,4 +31,5 @@ pub async fn start(config: &Config, challenge: &str, csrf_state: &str) -> Result
     // Request handler after receiving the auth code
     let (tx, mut rx) = tokio::sync::mpsc::channel::<()>(10);
 
-    // Initial
+    // Initialise the shared state
+    let 
