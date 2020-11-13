@@ -32,4 +32,5 @@ pub async fn start(config: &Config, challenge: &str, csrf_state: &str) -> Result
     let (tx, mut rx) = tokio::sync::mpsc::channel::<()>(10);
 
     // Initialise the shared state
-    let 
+    let state = Arc::new(State {
+     
