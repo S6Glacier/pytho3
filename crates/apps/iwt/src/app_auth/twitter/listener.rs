@@ -33,4 +33,5 @@ pub async fn start(config: &Config, challenge: &str, csrf_state: &str) -> Result
 
     // Initialise the shared state
     let state = Arc::new(State {
-        challenge: challenge.to_st
+        challenge: challenge.to_string(),
+        oauth_state: csrf_state.to_
