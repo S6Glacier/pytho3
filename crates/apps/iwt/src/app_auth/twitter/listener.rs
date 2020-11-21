@@ -35,4 +35,5 @@ pub async fn start(config: &Config, challenge: &str, csrf_state: &str) -> Result
     let state = Arc::new(State {
         challenge: challenge.to_string(),
         oauth_state: csrf_state.to_string(),
-        client_id: config.twitte
+        client_id: config.twitter.client_id.to_string(),
+        shut
