@@ -37,4 +37,7 @@ pub async fn start(config: &Config, challenge: &str, csrf_state: &str) -> Result
         oauth_state: csrf_state.to_string(),
         client_id: config.twitter.client_id.to_string(),
         shutdown_signal: tx,
-        db
+        db_path: config.db.path.clone(),
+    });
+
+  
