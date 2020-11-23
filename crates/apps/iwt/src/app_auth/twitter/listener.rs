@@ -40,4 +40,5 @@ pub async fn start(config: &Config, challenge: &str, csrf_state: &str) -> Result
         db_path: config.db.path.clone(),
     });
 
-    let sock_addr = SocketAddr::new(IpAddr::V4(Ipv4Addr::LOCALHOST)
+    let sock_addr = SocketAddr::new(IpAddr::V4(Ipv4Addr::LOCALHOST), 6009);
+    let app = Ro
