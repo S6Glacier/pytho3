@@ -42,4 +42,5 @@ pub async fn start(config: &Config, challenge: &str, csrf_state: &str) -> Result
 
     let sock_addr = SocketAddr::new(IpAddr::V4(Ipv4Addr::LOCALHOST), 6009);
     let app = Router::new()
-        .route("/", get
+        .route("/", get(receive_token))
+        // shate t
