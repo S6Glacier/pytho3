@@ -46,4 +46,5 @@ pub async fn start(config: &Config, challenge: &str, csrf_state: &str) -> Result
         // shate the state with the request handler
         .layer(Extension(state));
 
-    axum::Server::bind(&
+    axum::Server::bind(&sock_addr)
+        .serve(app.into_make_serv
