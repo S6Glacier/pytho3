@@ -48,4 +48,4 @@ pub async fn start(config: &Config, challenge: &str, csrf_state: &str) -> Result
 
     axum::Server::bind(&sock_addr)
         .serve(app.into_make_service())
-        // gr
+        // gracefuly shut down the server when 
