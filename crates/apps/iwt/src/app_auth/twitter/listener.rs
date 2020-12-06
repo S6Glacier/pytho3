@@ -52,4 +52,7 @@ pub async fn start(config: &Config, challenge: &str, csrf_state: &str) -> Result
         // previously created channel
         .with_graceful_shutdown(async { rx.recv().await.unwrap() })
         .await
-        .map_err(|_
+        .map_err(|_| Error::ListenerError())
+}
+
+#[
