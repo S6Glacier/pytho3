@@ -55,4 +55,5 @@ pub async fn start(config: &Config, challenge: &str, csrf_state: &str) -> Result
         .map_err(|_| Error::ListenerError())
 }
 
-#[
+#[derive(Deserialize)]
+struct TokenResp
