@@ -51,4 +51,5 @@ pub async fn start(config: &Config, challenge: &str, csrf_state: &str) -> Result
         // gracefuly shut down the server when we receive a message on the
         // previously created channel
         .with_graceful_shutdown(async { rx.recv().await.unwrap() })
-        .
+        .await
+        .map_err(|_
