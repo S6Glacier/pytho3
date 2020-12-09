@@ -57,4 +57,6 @@ pub async fn start(config: &Config, challenge: &str, csrf_state: &str) -> Result
 
 #[derive(Deserialize)]
 struct TokenResponse {
-    token_type: Strin
+    token_type: String,
+    access_token: String,
+    refresh_token
