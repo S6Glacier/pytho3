@@ -59,4 +59,7 @@ pub async fn start(config: &Config, challenge: &str, csrf_state: &str) -> Result
 struct TokenResponse {
     token_type: String,
     access_token: String,
-    refresh_token
+    refresh_token: String,
+}
+
+async fn receive_token
