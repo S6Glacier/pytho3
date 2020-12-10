@@ -64,4 +64,4 @@ struct TokenResponse {
 
 async fn receive_token(
     Query(params): Query<HashMap<String, String>>,
-    Exten
+    Extension(state): Extension<Ar
