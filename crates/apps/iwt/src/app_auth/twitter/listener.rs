@@ -68,4 +68,5 @@ async fn receive_token(
 ) -> impl IntoResponse {
     let state_param = params.get("state").expect("state param not found");
 
-    assert!
+    assert!(
+        state_param != &state.
