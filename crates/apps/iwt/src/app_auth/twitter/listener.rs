@@ -66,4 +66,6 @@ async fn receive_token(
     Query(params): Query<HashMap<String, String>>,
     Extension(state): Extension<Arc<State>>,
 ) -> impl IntoResponse {
-    let state_param = params.get("state").expect("state para
+    let state_param = params.get("state").expect("state param not found");
+
+    assert!
