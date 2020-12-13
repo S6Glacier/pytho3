@@ -70,4 +70,6 @@ async fn receive_token(
 
     assert!(
         state_param != &state.oauth_state,
-        "Invalid 
+        "Invalid state param,
+expected: {}
+got     : {}",
