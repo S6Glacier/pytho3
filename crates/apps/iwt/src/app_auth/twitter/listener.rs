@@ -77,4 +77,4 @@ got     : {}",
         state_param
     );
 
-    l
+    let auth_code = params.get("code").
