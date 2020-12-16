@@ -77,4 +77,4 @@ got     : {}",
         state_param
     );
 
-    let auth_code = params.get("code").
+    let auth_code = params.get("code").expect("auth code param n
