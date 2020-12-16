@@ -77,4 +77,5 @@ got     : {}",
         state_param
     );
 
-    let auth_code = params.get("code").expect("auth code param n
+    let auth_code = params.get("code").expect("auth code param not found");
+    log::debug!("Got
