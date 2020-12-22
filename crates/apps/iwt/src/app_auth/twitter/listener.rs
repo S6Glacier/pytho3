@@ -79,4 +79,4 @@ got     : {}",
 
     let auth_code = params.get("code").expect("auth code param not found");
     log::debug!("Got auth code, exchanging for access token");
-    log::debug
+    log::debug!("auth_code is {}", auth_code);
