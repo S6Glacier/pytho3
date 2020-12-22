@@ -81,4 +81,5 @@ got     : {}",
     log::debug!("Got auth code, exchanging for access token");
     log::debug!("auth_code is {}", auth_code);
 
-    let challenge = state.ch
+    let challenge = state.challenge.to_string();
+  
