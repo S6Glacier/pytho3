@@ -86,4 +86,5 @@ got     : {}",
         ("code", auth_code.as_str()),
         ("grant_type", "authorization_code"),
         ("client_id", state.client_id.as_str()),
-        ("code_veri
+        ("code_verifier", challenge.as_str()),
+  
