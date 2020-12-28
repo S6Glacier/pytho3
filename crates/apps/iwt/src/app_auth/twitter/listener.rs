@@ -87,4 +87,7 @@ got     : {}",
         ("grant_type", "authorization_code"),
         ("client_id", state.client_id.as_str()),
         ("code_verifier", challenge.as_str()),
-        ("redirect_uri", "http://127.0.0
+        ("redirect_uri", "http://127.0.0.1:6009"),
+    ];
+
+    // Ex
