@@ -90,4 +90,5 @@ got     : {}",
         ("redirect_uri", "http://127.0.0.1:6009"),
     ];
 
-    // Exchange the auth code to an access_token and a ref
+    // Exchange the auth code to an access_token and a refresh_token
+    let client = reqw
