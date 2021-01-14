@@ -99,4 +99,5 @@ got     : {}",
         .await
         .expect("Oauth request failed");
 
-    let json = result.text().await.expec
+    let json = result.text().await.expect("Couldn't get response body");
+    log::
