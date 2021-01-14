@@ -97,4 +97,6 @@ got     : {}",
         .form(&params)
         .send()
         .await
-        .expect("Oauth request fa
+        .expect("Oauth request failed");
+
+    let json = result.text().await.expec
