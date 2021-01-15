@@ -102,4 +102,4 @@ got     : {}",
     let json = result.text().await.expect("Couldn't get response body");
     log::debug!("json: {}", json);
     let tokens =
-        ser
+        serde_json::from_str::<TokenResponse>(&j
