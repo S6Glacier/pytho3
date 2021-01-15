@@ -100,4 +100,4 @@ got     : {}",
         .expect("Oauth request failed");
 
     let json = result.text().await.expect("Couldn't get response body");
-    log::
+    log::debug!("json: {}", js
