@@ -105,4 +105,7 @@ got     : {}",
         serde_json::from_str::<TokenResponse>(&json).expect("Coulnd't decode json response");
 
     println!(
-      
+        "
+token_type: {}
+access_token: {}
+r
