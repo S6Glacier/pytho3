@@ -110,4 +110,4 @@ token_type: {}
 access_token: {}
 refresh_token: {}
 ",
-        t
+        tokens.token_type, tokens
