@@ -114,4 +114,5 @@ refresh_token: {}
     );
 
     // TODO: add argument to be able to disable updating the db
-    // if let Some(
+    // if let Some(db_path) = state.db_path.clone() {
+    persist
