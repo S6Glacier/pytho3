@@ -115,4 +115,5 @@ refresh_token: {}
 
     // TODO: add argument to be able to disable updating the db
     // if let Some(db_path) = state.db_path.clone() {
-    persist_tokens(&tokens, &state.db_path).expect
+    persist_tokens(&tokens, &state.db_path).expect("couldn't persist tokens");
+ 
