@@ -118,4 +118,5 @@ refresh_token: {}
     persist_tokens(&tokens, &state.db_path).expect("couldn't persist tokens");
     // }
 
-    // Send the shut do
+    // Send the shut down signal
+    state.shutdown_signal
