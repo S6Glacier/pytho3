@@ -119,4 +119,6 @@ refresh_token: {}
     // }
 
     // Send the shut down signal
-    state.shutdown_signal
+    state.shutdown_signal.send(()).await.unwrap();
+
+ 
