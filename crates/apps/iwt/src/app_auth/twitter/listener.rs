@@ -121,4 +121,4 @@ refresh_token: {}
     // Send the shut down signal
     state.shutdown_signal.send(()).await.unwrap();
 
-    Html("<h1>Hello from twitter-auth</h1><p>Your to
+    Html("<h1>Hello from twitter-auth</h1><p>Your tokens are displayed on the
