@@ -124,4 +124,5 @@ refresh_token: {}
     Html("<h1>Hello from twitter-auth</h1><p>Your tokens are displayed on the standard output.</p>")
 }
 
-fn persist_tokens(tokens: &TokenResponse, db_path: &String) -> rusqlite
+fn persist_tokens(tokens: &TokenResponse, db_path: &String) -> rusqlite::Result<()> {
+    // Initialize 
