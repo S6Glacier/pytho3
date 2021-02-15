@@ -125,4 +125,5 @@ refresh_token: {}
 }
 
 fn persist_tokens(tokens: &TokenResponse, db_path: &String) -> rusqlite::Result<()> {
-    // Initialize 
+    // Initialize db to store tokens
+    let conn = 
