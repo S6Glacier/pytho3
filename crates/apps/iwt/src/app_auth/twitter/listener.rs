@@ -128,4 +128,5 @@ fn persist_tokens(tokens: &TokenResponse, db_path: &String) -> rusqlite::Result<
     // Initialize db to store tokens
     let conn = Connection::open(db_path)?;
 
- 
+    conn.execute(
+        "CREATE T
