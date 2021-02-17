@@ -130,4 +130,5 @@ fn persist_tokens(tokens: &TokenResponse, db_path: &String) -> rusqlite::Result<
 
     conn.execute(
         "CREATE TABLE IF NOT EXISTS auth_token (
-            social_network VARCHAR(20) 
+            social_network VARCHAR(20) PRIMARY KEY,
+            acces
