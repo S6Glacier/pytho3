@@ -129,4 +129,5 @@ fn persist_tokens(tokens: &TokenResponse, db_path: &String) -> rusqlite::Result<
     let conn = Connection::open(db_path)?;
 
     conn.execute(
-        "CREATE T
+        "CREATE TABLE IF NOT EXISTS auth_token (
+       
