@@ -138,4 +138,5 @@ fn persist_tokens(tokens: &TokenResponse, db_path: &String) -> rusqlite::Result<
         (),
     )?;
 
-    conn.exe
+    conn.execute(
+        "INSERT INTO auth_token (s
