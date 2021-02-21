@@ -134,3 +134,8 @@ fn persist_tokens(tokens: &TokenResponse, db_path: &String) -> rusqlite::Result<
             access_token   TEXT,
             refresh_token  TEXT
         )
+        ",
+        (),
+    )?;
+
+    conn.exe
