@@ -140,4 +140,5 @@ fn persist_tokens(tokens: &TokenResponse, db_path: &String) -> rusqlite::Result<
 
     conn.execute(
         "INSERT INTO auth_token (social_network, access_token, refresh_token)
-         VALUES (?1, ?2, ?3
+         VALUES (?1, ?2, ?3)
+         ON CONFLICT (social_n
