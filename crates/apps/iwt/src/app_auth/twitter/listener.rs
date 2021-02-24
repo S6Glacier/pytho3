@@ -139,4 +139,4 @@ fn persist_tokens(tokens: &TokenResponse, db_path: &String) -> rusqlite::Result<
     )?;
 
     conn.execute(
-        "INSERT INTO auth_token (s
+        "INSERT INTO auth_token (social_network, access_token, refresh_t
