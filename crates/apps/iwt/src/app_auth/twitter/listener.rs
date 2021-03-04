@@ -144,3 +144,7 @@ fn persist_tokens(tokens: &TokenResponse, db_path: &String) -> rusqlite::Result<
          ON CONFLICT (social_network) 
             DO UPDATE SET access_token = excluded.access_token, refresh_token = excluded.refresh_token",
         (Twitter.to_string().as_str(), tokens.access_token.clone(), tokens.refresh_token.clone())
+    )?;
+
+    Ok(())
+}
