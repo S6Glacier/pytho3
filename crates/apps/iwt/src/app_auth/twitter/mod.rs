@@ -39,3 +39,21 @@ pub async fn start_flow(config: &Config) -> Result<(), Error> {
 ",
         oauth_uri
     );
+
+    listener::start(config, &challenge, &csrf_state).await
+}
+
+fn construct_uri(client_id: &str, csrf_state: &str, challenge: &str) -> String {
+    let query = url::form_urlencoded::Serializer::new(String::new())
+        .append_pair("response_type", "code")
+        .append_pair("client_id", client_id)
+        .append_pair("redirect_uri", "http://127.0.0.1:6009")
+        .append_pair("scope", "tweet.read tweet.write users.read offline.access")
+        .append_pair("state", csrf_state)
+        .append_pair("code_challenge", challenge)
+        .append_pair("code_challenge_method", "plain")
+        .finish();
+
+    // Construct URI that starts the Oauth flow
+    format!("https://twitter.com/i/oauth2/authorize?{query}")
+}
