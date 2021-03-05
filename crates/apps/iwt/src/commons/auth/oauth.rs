@@ -37,3 +37,45 @@ impl<DB: TokenDB> AuthedClient<DB> {
         Self {
             oauth_client,
             db,
+            social_network,
+            http_client: reqwest::Client::new(),
+            tokens: Mutex::new(TokenCredentials {
+                access_token,
+                refresh_token,
+            }),
+        }
+    }
+
+    pub async fn authed_request(
+        &self,
+        mut request: Request,
+    ) -> Result<Response, Box<dyn std::error::Error>> {
+        {
+            let tokens = self.tokens.lock().await;
+            authorize_request(&mut request, &tokens);
+        }
+
+        let mut cloned_request = request.try_clone().expect("Request cannot be cloned");
+
+        log::debug!("headers: {:?}", request.headers());
+        let response = self.http_client.execute(request).await?;
+        log::debug!("response from execue: {:?}", response);
+
+        if response.status() == StatusCode::UNAUTHORIZED {
+            log::debug!("recieved unauthorized response, refresing token");
+            let mut tokens = self.tokens.lock().await;
+            log::debug!("token credentials lock acquired");
+            *tokens = self.exchange_refresh_token(&tokens).await?;
+
+            authorize_request(&mut cloned_request, &tokens);
+            log::debug!(
+                "headers after token refresh: {:?}",
+                cloned_request.headers()
+            );
+            self.http_client
+                .execute(cloned_request)
+                .await
+                .map(|res| {
+                    log::debug!("response: {:?}", res);
+                    res
+                })
