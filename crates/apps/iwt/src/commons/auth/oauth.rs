@@ -110,3 +110,42 @@ impl<DB: TokenDB> AuthedClient<DB> {
                         .unwrap_or(&tokens.refresh_token)
                         .clone(),
                 };
+
+                log::debug!(
+                    "access token refresh successful, new token: {}",
+                    tokens.access_token.secret()
+                );
+
+                self.db
+                    .store(
+                        &self.social_network,
+                        &tokens.access_token,
+                        &tokens.refresh_token,
+                    )
+                    .map(|_| tokens)
+            }
+        }
+    }
+}
+
+fn authorize_request(request: &mut Request, tokens: &TokenCredentials) {
+    request.headers_mut().remove(AUTHORIZATION);
+    request.headers_mut().append(
+        AUTHORIZATION,
+        HeaderValue::from_str(&format!("Bearer {}", tokens.access_token.secret())).unwrap(),
+    );
+}
+
+#[cfg(test)]
+mod test {
+    use std::rc::Rc;
+
+    use crate::commons::auth::token_db::TokenDB;
+    use crate::social::Network;
+    use oauth2::{basic::BasicClient, AuthUrl, ClientId, TokenUrl};
+    use reqwest::{Method, Request, StatusCode, Url};
+    use wiremock::{
+        http::HeaderName,
+        matchers::{headers, method, path},
+        Mock, MockServer, ResponseTemplate,
+    };
