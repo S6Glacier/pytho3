@@ -149,3 +149,33 @@ mod test {
         matchers::{headers, method, path},
         Mock, MockServer, ResponseTemplate,
     };
+
+    use crate::stubs::auth::token_db::stubs::StubTokenDB;
+
+    use crate::commons::auth::oauth::AuthedClient;
+
+    fn basic_client(base_url: &str) -> BasicClient {
+        BasicClient::new(
+            ClientId::new(String::from("some-client-id")),
+            None,
+            AuthUrl::new(format!("{base_url}/oauth/2")).unwrap(),
+            Some(TokenUrl::new(format!("{base_url}/oauth/token")).unwrap()),
+        )
+    }
+
+    fn create_authed_client(base_url: &str) -> (Rc<impl TokenDB>, AuthedClient<impl TokenDB>) {
+        let db = StubTokenDB::new();
+        let shared_db = Rc::new(db);
+        (
+            Rc::clone(&shared_db),
+            AuthedClient::new(Network::Twitter, basic_client(base_url), shared_db),
+        )
+    }
+
+    #[tokio::test]
+    async fn test_token_is_not_refreshed_if_response_is_not_401() {
+        let mock_server = MockServer::start().await;
+
+        let (_, authed_client) = create_authed_client(&mock_server.uri());
+
+        Mock::given(method("GET"))
