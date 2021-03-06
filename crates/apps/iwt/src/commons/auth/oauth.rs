@@ -79,3 +79,34 @@ impl<DB: TokenDB> AuthedClient<DB> {
                     log::debug!("response: {:?}", res);
                     res
                 })
+                .map_err(|err| Box::new(err) as Box<dyn std::error::Error>)
+        } else {
+            Ok(response)
+        }
+    }
+
+    async fn exchange_refresh_token(
+        &self,
+        tokens: &TokenCredentials,
+    ) -> Result<TokenCredentials, Box<dyn std::error::Error>> {
+        log::debug!("exchanging refresh_token...");
+
+        let response = self
+            .oauth_client
+            .exchange_refresh_token(&tokens.refresh_token)
+            .request_async(async_http_client)
+            .await;
+
+        match response {
+            Err(error) => {
+                log::error!("token refresh failed: {:?}", error);
+                Err(Box::new(error) as Box<dyn std::error::Error>)
+            }
+            Ok(token_response) => {
+                let tokens = TokenCredentials {
+                    access_token: token_response.access_token().clone(),
+                    refresh_token: token_response
+                        .refresh_token()
+                        .unwrap_or(&tokens.refresh_token)
+                        .clone(),
+                };
