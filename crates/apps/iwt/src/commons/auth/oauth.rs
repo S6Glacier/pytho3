@@ -222,3 +222,44 @@ mod test {
                 vec!["Bearer initial-access-token"],
             ))
             .respond_with(ResponseTemplate::new(401))
+            .mount(&mock_server)
+            .await;
+
+        Mock::given(method("GET"))
+            .and(path("/restricted"))
+            .and(headers("Authorization", vec!["Bearer new-access-token"]))
+            .respond_with(ResponseTemplate::new(200))
+            .mount(&mock_server)
+            .await;
+
+        Mock::given(method("POST"))
+            .and(path("/oauth/token"))
+            .respond_with(
+                ResponseTemplate::new(200).set_body_raw(
+                    r#"
+            {
+                "token_type":"bearer",
+                "expires_in":7200,
+                "access_token":"new-access-token",
+                "scope":"some-scope",
+                "refresh_token":"new-refresh-token"
+            }
+            "#
+                    .as_bytes()
+                    .to_owned(),
+                    "application/json",
+                ),
+            )
+            .mount(&mock_server)
+            .await;
+
+        let request = Request::new(
+            Method::GET,
+            Url::parse(format!("{}/restricted", mock_server.uri()).as_str()).unwrap(),
+        );
+
+        let result = authed_client.authed_request(request).await;
+        // There is a response
+        assert!(result.is_ok(), "{result:?}");
+
+        // Response is expected
