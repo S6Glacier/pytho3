@@ -263,3 +263,34 @@ mod test {
         assert!(result.is_ok(), "{result:?}");
 
         // Response is expected
+        assert_eq!(result.unwrap().status(), StatusCode::OK);
+
+        let requests = mock_server
+            .received_requests()
+            .await
+            .expect("Requests expected");
+
+        // There were exactly 3 requests
+        assert_eq!(requests.len(), 3);
+
+        // The first request was to GET the /restricted url
+        assert_eq!(requests[0].url.path(), "/restricted");
+        assert_eq!(requests[0].method, wiremock::http::Method::Get);
+        assert_eq!(
+            requests[0]
+                .headers
+                .get(&HeaderName::from("Authorization"))
+                .map(|vs| vs
+                    .iter()
+                    .map(std::string::ToString::to_string)
+                    .collect::<Vec<_>>()),
+            Some(vec!["Bearer initial-access-token".to_string()])
+        );
+
+        // The second request was POST-ed to the oauth endpoint
+        assert_eq!(requests[1].url.path(), "/oauth/token");
+        assert_eq!(requests[1].method, wiremock::http::Method::Post);
+
+        // The request to the auth endpoint had the right credentials
+        let form: Vec<(String, String)> = url::form_urlencoded::parse(&requests[1].body)
+            .into_owned()
