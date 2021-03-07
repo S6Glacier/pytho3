@@ -179,3 +179,46 @@ mod test {
         let (_, authed_client) = create_authed_client(&mock_server.uri());
 
         Mock::given(method("GET"))
+            .and(path("/restricted"))
+            .respond_with(ResponseTemplate::new(200))
+            .mount(&mock_server)
+            .await;
+
+        let request = Request::new(
+            Method::GET,
+            Url::parse(format!("{}/restricted", mock_server.uri()).as_str()).unwrap(),
+        );
+
+        let result = authed_client.authed_request(request).await;
+        // There is a response
+        assert!(result.is_ok(), "{result:?}");
+
+        // Response is expected
+        assert_eq!(result.unwrap().status(), StatusCode::OK);
+
+        let requests = mock_server
+            .received_requests()
+            .await
+            .expect("Requests expected");
+
+        // There was exactly 1 requests
+        assert_eq!(requests.len(), 1);
+
+        // The first request was to GET the /restricted url
+        assert_eq!(requests[0].url.path(), "/restricted");
+        assert_eq!(requests[0].method, wiremock::http::Method::Get);
+    }
+
+    #[tokio::test]
+    async fn test_token_is_refreshed_if_response_is_401() {
+        let mock_server = MockServer::start().await;
+
+        let (db, authed_client) = create_authed_client(&mock_server.uri());
+
+        Mock::given(method("GET"))
+            .and(path("/restricted"))
+            .and(headers(
+                "Authorization",
+                vec!["Bearer initial-access-token"],
+            ))
+            .respond_with(ResponseTemplate::new(401))
