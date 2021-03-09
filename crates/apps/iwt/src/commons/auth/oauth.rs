@@ -328,3 +328,4 @@ mod test {
             db.get_refresh_token(&Network::Twitter).unwrap().secret(),
         );
     }
+}
