@@ -294,3 +294,37 @@ mod test {
         // The request to the auth endpoint had the right credentials
         let form: Vec<(String, String)> = url::form_urlencoded::parse(&requests[1].body)
             .into_owned()
+            .collect();
+        assert!(form
+            .iter()
+            .any(|(k, v)| k == "refresh_token" && v == "initial-refresh-token"));
+
+        assert!(form
+            .iter()
+            .any(|(k, v)| k == "client_id" && v == "some-client-id"));
+
+        // The thirs request was to GET the /restricted url
+        assert_eq!(requests[2].url.path(), "/restricted");
+        assert_eq!(requests[2].method, wiremock::http::Method::Get);
+        assert_eq!(
+            requests[2]
+                .headers
+                .get(&HeaderName::from("Authorization"))
+                .map(|vs| vs
+                    .iter()
+                    .map(std::string::ToString::to_string)
+                    .collect::<Vec<_>>()),
+            Some(vec!["Bearer new-access-token".to_string()])
+        );
+
+        // The tokens are updated in the db
+        assert_eq!(
+            "new-access-token",
+            db.get_access_token(&Network::Twitter).unwrap().secret(),
+        );
+
+        assert_eq!(
+            "new-refresh-token",
+            db.get_refresh_token(&Network::Twitter).unwrap().secret(),
+        );
+    }
