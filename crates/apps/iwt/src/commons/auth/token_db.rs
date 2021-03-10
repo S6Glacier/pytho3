@@ -70,3 +70,10 @@ impl TokenDB for SqliteTokenDB {
             "INSERT INTO auth_token (social_network, access_token, refresh_token)
              VALUES (?1, ?2, ?3)
              ON CONFLICT (social_network) 
+                DO UPDATE SET access_token = excluded.access_token, refresh_token = excluded.refresh_token",
+            (social_network.to_string().as_str(), access_token.secret(), refresh_token.secret())
+        )
+            .map(|_| ())
+            .map_err(|err| Box::new(err) as Box<dyn std::error::Error>)
+    }
+}
