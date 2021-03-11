@@ -1,4 +1,5 @@
 use std::{error::Error, fmt::Display};
 
 pub mod auth;
-pub mod
+pub mod permashort_link;
+pub mod text;
