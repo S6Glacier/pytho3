@@ -5,4 +5,5 @@ pub mod permashort_link;
 pub mod text;
 pub mod url_shortener;
 
-#[derive(D
+#[derive(Debug)]
+pub struct SqlConversionError {
