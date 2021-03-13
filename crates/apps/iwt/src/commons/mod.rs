@@ -10,4 +10,5 @@ pub struct SqlConversionError {
     pub message: String,
 }
 
-impl Di
+impl Display for SqlConversionError {
+    fn f
