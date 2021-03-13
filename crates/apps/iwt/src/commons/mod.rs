@@ -11,4 +11,4 @@ pub struct SqlConversionError {
 }
 
 impl Display for SqlConversionError {
-    fn f
+    fn fmt(&self, f: &mut std::fmt::Formatt
