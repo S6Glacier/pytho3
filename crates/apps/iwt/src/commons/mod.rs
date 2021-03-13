@@ -7,3 +7,7 @@ pub mod url_shortener;
 
 #[derive(Debug)]
 pub struct SqlConversionError {
+    pub message: String,
+}
+
+impl Di
