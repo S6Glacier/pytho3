@@ -16,4 +16,4 @@ impl Display for SqlConversionError {
     }
 }
 
-impl Er
+impl Error for SqlConversionError {}
