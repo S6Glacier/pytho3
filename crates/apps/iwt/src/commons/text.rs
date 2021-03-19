@@ -81,3 +81,26 @@ pub fn clean_description(description: &str) -> (String, bool) {
     log::debug!("original desc:\n{}\n", str);
 
     let fragment = Html::parse_document(&format!("<html>{}</html>", &str));
+    let cleaned = fragment
+        .select(&Selector::parse("html").unwrap())
+        .next()
+        .unwrap()
+        .text()
+        .collect::<Vec<_>>()
+        .join("");
+
+    log::debug!("cleaned desc:\n{}\n", cleaned);
+
+    (cleaned, shortened)
+}
+
+#[cfg(test)]
+mod test {
+    use crate::commons::permashort_link::PermashortCitation;
+
+    use super::{shorten, shorten_with_permashort_citation};
+
+    #[test]
+    fn test_short_returns_same_if_short() {
+        let short_text = "This is some text.";
+        assert_eq!(shorten(short_text, 100), short_text);
