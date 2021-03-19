@@ -45,3 +45,39 @@ pub fn shorten_with_permashort_citation(
         appended.push_str(&suffix);
         appended
     } else {
+        let shortened = shorten(
+            &cleaned,
+            limit - 23 - 4 - hash_tags.len() - 2, /* Link + space + ellipsis + quuotes + hastags + space around hash_tags*/
+        );
+
+        format!(
+            "\"{}…\"\n{} {}",
+            shortened,
+            hash_tags,
+            permashort_citation.to_uri()
+        )
+    }
+}
+
+fn words(input: &str) -> Vec<&str> {
+    input.split(' ').collect()
+}
+
+#[must_use]
+pub fn clean_description(description: &str) -> (String, bool) {
+    let re = Regex::new(r"<h[1-6] ").unwrap();
+
+    let summary: String = re.split(description).next().unwrap().to_string();
+
+    let shortened = summary != description;
+
+    let str = summary
+        .replace("<li>", "<li>- ")
+        .replace("<code>", "`")
+        .replace("</code>", "`")
+        .replace('\n', " ")
+        .replace("</p> ", "\n\n");
+
+    log::debug!("original desc:\n{}\n", str);
+
+    let fragment = Html::parse_document(&format!("<html>{}</html>", &str));
