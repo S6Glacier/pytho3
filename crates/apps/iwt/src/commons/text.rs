@@ -104,3 +104,41 @@ mod test {
     fn test_short_returns_same_if_short() {
         let short_text = "This is some text.";
         assert_eq!(shorten(short_text, 100), short_text);
+    }
+
+    #[test]
+    fn test_shorten_returns_shortened_sentence_limit_on_dot() {
+        let text = "This is some text. Looooong word.";
+        assert_eq!(shorten(text, 18), "This is some");
+    }
+
+    #[test]
+    fn test_shorten_returns_shortened_sentence_limit_after_dot() {
+        let text = "This is some text. Looooong word.";
+        assert_eq!(shorten(text, 19), "This is some text.");
+    }
+
+    #[test]
+    fn test_shorten_returns_shortened_sentence_limit_with_ellipsis() {
+        let text = "This is some text. Looooong word.";
+        assert_eq!(shorten(text, 21), "This is some text.");
+    }
+
+    #[test]
+    fn test_shorten_returns_shortened_sentence_limit_with_ellipsis_longer() {
+        let text = "This is some text. Looooong word.";
+        assert_eq!(shorten(text, 23), "This is some text.");
+    }
+
+    #[test]
+    fn test_shorten_with_permashort_citation_should_add_hashtags() {
+        let short_text = "This is some text.";
+        let permashort_citation = PermashortCitation::new(
+            "http".to_string(),
+            "localhost".to_string(),
+            "asdf".to_string(),
+        );
+        assert_eq!(
+            shorten_with_permashort_citation(
+                short_text,
+                100,
