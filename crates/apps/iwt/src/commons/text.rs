@@ -142,3 +142,29 @@ mod test {
             shorten_with_permashort_citation(
                 short_text,
                 100,
+                &permashort_citation,
+                &["some-tag".to_string()]
+            ),
+            short_text.to_string() + "\n#SomeTag (localhost asdf)"
+        );
+    }
+
+    #[test]
+    fn test_shorten_with_permashort_citation_should_add_hashtags_when_text_too_long() {
+        let short_text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
+        let permashort_citation = PermashortCitation::new(
+            "http".to_string(),
+            "localhost".to_string(),
+            "asdf".to_string(),
+        );
+        assert_eq!(
+            shorten_with_permashort_citation(
+                short_text,
+                60,
+                &permashort_citation,
+                &["tag".to_string()]
+            ),
+            "\"Lorem ipsum dolor sit…\"\n#Tag http://localhost/asdf"
+        );
+    }
+}
