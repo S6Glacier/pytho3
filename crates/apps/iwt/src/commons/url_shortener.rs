@@ -7,4 +7,7 @@ use super::permashort_link::PermashortCitation;
 
 #[derive(Debug)]
 pub struct ClientError {
-    pub message: Str
+    pub message: String,
+}
+
+impl From<reqwest::
