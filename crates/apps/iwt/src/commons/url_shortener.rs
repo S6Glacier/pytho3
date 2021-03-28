@@ -10,4 +10,5 @@ pub struct ClientError {
     pub message: String,
 }
 
-impl From<reqwest::
+impl From<reqwest::Error> for ClientError {
+    fn
