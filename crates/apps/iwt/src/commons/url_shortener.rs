@@ -6,4 +6,5 @@ use reqwest;
 use super::permashort_link::PermashortCitation;
 
 #[derive(Debug)]
-pub str
+pub struct ClientError {
+    pub message: Str
