@@ -12,4 +12,4 @@ pub struct ClientError {
 
 impl From<reqwest::Error> for ClientError {
     fn from(e: reqwest::Error) -> Self {
- 
+        // TODO: better error han
