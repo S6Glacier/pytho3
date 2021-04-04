@@ -15,3 +15,8 @@ impl From<reqwest::Error> for ClientError {
         // TODO: better error handling
         ClientError {
             message: e.to_string(),
+        }
+    }
+}
+
+i
