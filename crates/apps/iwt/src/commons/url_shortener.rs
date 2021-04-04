@@ -19,4 +19,5 @@ impl From<reqwest::Error> for ClientError {
     }
 }
 
-i
+impl Display for ClientError {
+    fn 
