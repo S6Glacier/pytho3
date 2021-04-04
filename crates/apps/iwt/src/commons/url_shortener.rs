@@ -20,4 +20,4 @@ impl From<reqwest::Error> for ClientError {
 }
 
 impl Display for ClientError {
-    fn 
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_
