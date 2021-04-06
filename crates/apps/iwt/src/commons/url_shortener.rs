@@ -25,4 +25,6 @@ impl Display for ClientError {
     }
 }
 
-impl std::error::Error for
+impl std::error::Error for ClientError {}
+
+#[async_trait(?Sen
