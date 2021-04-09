@@ -29,4 +29,4 @@ impl std::error::Error for ClientError {}
 
 #[async_trait(?Send)]
 pub trait Client {
-    async 
+    async fn put_uri(&self, ur
