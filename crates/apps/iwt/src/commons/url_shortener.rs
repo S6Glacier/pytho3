@@ -27,4 +27,6 @@ impl Display for ClientError {
 
 impl std::error::Error for ClientError {}
 
-#[async_trait(?Sen
+#[async_trait(?Send)]
+pub trait Client {
+    async 
