@@ -32,4 +32,5 @@ pub trait Client {
     async fn put_uri(&self, uri: &str) -> Result<PermashortCitation, ClientError>;
 }
 
-pub struct Req
+pub struct ReqwestClient {
+    protocol: Str
