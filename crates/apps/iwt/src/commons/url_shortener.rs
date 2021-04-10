@@ -33,4 +33,6 @@ pub trait Client {
 }
 
 pub struct ReqwestClient {
-    protocol: Str
+    protocol: String,
+    domain: String,
+    base_u
