@@ -35,4 +35,5 @@ pub trait Client {
 pub struct ReqwestClient {
     protocol: String,
     domain: String,
-    base_u
+    base_uri: String,
+    client: reqwest
