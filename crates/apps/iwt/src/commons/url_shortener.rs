@@ -40,4 +40,5 @@ pub struct ReqwestClient {
 }
 
 impl ReqwestClient {
-    #[m
+    #[must_use]
+    pub fn new(pr
