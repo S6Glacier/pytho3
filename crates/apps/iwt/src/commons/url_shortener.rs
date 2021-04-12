@@ -36,4 +36,8 @@ pub struct ReqwestClient {
     protocol: String,
     domain: String,
     base_uri: String,
-    client: reqwest
+    client: reqwest::Client,
+}
+
+impl ReqwestClient {
+    #[m
