@@ -41,4 +41,4 @@ pub struct ReqwestClient {
 
 impl ReqwestClient {
     #[must_use]
-    pub fn new(pr
+    pub fn new(protocol: &str, domain: &str, put_ba
