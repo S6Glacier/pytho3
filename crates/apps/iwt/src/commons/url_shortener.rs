@@ -43,4 +43,5 @@ impl ReqwestClient {
     #[must_use]
     pub fn new(protocol: &str, domain: &str, put_base_uri: Option<&String>) -> Self {
         Self {
-            
+            protocol: protocol.to_owned(),
+     
