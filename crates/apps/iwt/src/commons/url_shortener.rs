@@ -45,4 +45,5 @@ impl ReqwestClient {
         Self {
             protocol: protocol.to_owned(),
             domain: domain.to_owned(),
-            base_uri: put_base_
+            base_uri: put_base_uri
+                .unwrap_o
