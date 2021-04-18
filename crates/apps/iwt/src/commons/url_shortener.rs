@@ -47,4 +47,5 @@ impl ReqwestClient {
             domain: domain.to_owned(),
             base_uri: put_base_uri
                 .unwrap_or(&format!("{protocol}://{domain}"))
-                .clone
+                .clone(),
+            client: reqwe
