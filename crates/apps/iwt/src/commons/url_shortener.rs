@@ -48,4 +48,6 @@ impl ReqwestClient {
             base_uri: put_base_uri
                 .unwrap_or(&format!("{protocol}://{domain}"))
                 .clone(),
-            client: reqwe
+            client: reqwest::Client::new(),
+        }
+   
