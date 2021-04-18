@@ -50,4 +50,8 @@ impl ReqwestClient {
                 .clone(),
             client: reqwest::Client::new(),
         }
-   
+    }
+}
+
+#[async_trait(?Send)]
+impl Clien
