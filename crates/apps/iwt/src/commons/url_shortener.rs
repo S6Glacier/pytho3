@@ -54,4 +54,5 @@ impl ReqwestClient {
 }
 
 #[async_trait(?Send)]
-impl Clien
+impl Client for ReqwestClient {
+    async fn pu
