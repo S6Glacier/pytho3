@@ -55,4 +55,4 @@ impl ReqwestClient {
 
 #[async_trait(?Send)]
 impl Client for ReqwestClient {
-    async fn pu
+    async fn put_uri(&self, uri: &str) -> Result<Per
