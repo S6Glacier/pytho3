@@ -57,3 +57,5 @@ impl ReqwestClient {
 impl Client for ReqwestClient {
     async fn put_uri(&self, uri: &str) -> Result<PermashortCitation, ClientError> {
         let response = self
+            .client
+            .put(forma
