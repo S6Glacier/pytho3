@@ -58,4 +58,5 @@ impl Client for ReqwestClient {
     async fn put_uri(&self, uri: &str) -> Result<PermashortCitation, ClientError> {
         let response = self
             .client
-            .put(format!("{}/u/{}", self.base_uri,
+            .put(format!("{}/u/{}", self.base_uri, urlencoding::encode(uri)))
+      
