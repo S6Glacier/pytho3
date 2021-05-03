@@ -60,4 +60,6 @@ impl Client for ReqwestClient {
             .client
             .put(format!("{}/u/{}", self.base_uri, urlencoding::encode(uri)))
             .send()
-            .await?
+            .await?;
+
+        if response.status
