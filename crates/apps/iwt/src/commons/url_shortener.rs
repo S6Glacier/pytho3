@@ -62,4 +62,5 @@ impl Client for ReqwestClient {
             .send()
             .await?;
 
-        if response.status
+        if response.status().is_success() {
+           
