@@ -64,4 +64,5 @@ impl Client for ReqwestClient {
 
         if response.status().is_success() {
             let short = response.text().await?;
-            Ok(PermashortCita
+            Ok(PermashortCitation::new(
+                self.prot
