@@ -66,4 +66,5 @@ impl Client for ReqwestClient {
             let short = response.text().await?;
             Ok(PermashortCitation::new(
                 self.protocol.clone(),
-             
+                self.domain.clone(),
+  
