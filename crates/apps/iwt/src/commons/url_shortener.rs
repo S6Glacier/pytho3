@@ -67,4 +67,6 @@ impl Client for ReqwestClient {
             Ok(PermashortCitation::new(
                 self.protocol.clone(),
                 self.domain.clone(),
-                format!("s/{s
+                format!("s/{short}"),
+            ))
+     
