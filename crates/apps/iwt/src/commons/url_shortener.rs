@@ -70,4 +70,5 @@ impl Client for ReqwestClient {
                 format!("s/{short}"),
             ))
         } else {
-            Err(ClientEr
+            Err(ClientError {
+                mess
