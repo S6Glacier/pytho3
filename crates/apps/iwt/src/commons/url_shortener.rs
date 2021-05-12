@@ -69,4 +69,5 @@ impl Client for ReqwestClient {
                 self.domain.clone(),
                 format!("s/{short}"),
             ))
-     
+        } else {
+            Err(ClientEr
