@@ -71,4 +71,4 @@ impl Client for ReqwestClient {
             ))
         } else {
             Err(ClientError {
-                message: format!("Unexpected statu
+                message: format!("Unexpected status: {}", response.statu
