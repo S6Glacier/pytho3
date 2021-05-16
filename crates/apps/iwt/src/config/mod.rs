@@ -60,3 +60,40 @@ impl Config {
 mod test {
     use oauth2::AccessToken;
     use oauth2::ClientId;
+
+    use super::Config;
+    use super::Mastodon;
+    use super::Rss;
+    use super::Twitter;
+    use super::UrlShortener;
+    use super::DB;
+
+    #[test]
+    fn config_model_should_be_deserializable() {
+        let config = r#"
+        [rss]
+        urls = [
+          "http://exmample.com/rss.xml",
+          "http://exmample.com/some-site/rss.xml"
+        ]
+        [db]
+        path = "some/path"
+        [twitter]
+        client_id = "some_client_id"
+        [mastodon]
+        base_uri = "https://mastodon.social"
+        access_token = "some-access-token"
+        [url_shortener]
+        protocol = "http"
+        domain = "localhost:9000"
+        "#;
+
+        assert_eq!(
+            toml::from_str::<Config>(config),
+            Ok(Config {
+                rss: Rss {
+                    urls: vec![
+                        "http://exmample.com/rss.xml".to_string(),
+                        "http://exmample.com/some-site/rss.xml".to_string()
+                    ]
+                },
