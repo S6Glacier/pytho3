@@ -1,1 +1,3 @@
-# Cross Publis
+# Cross Publisher
+
+Syndicates microblog posts
