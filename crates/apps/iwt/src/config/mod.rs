@@ -97,3 +97,22 @@ mod test {
                         "http://exmample.com/some-site/rss.xml".to_string()
                     ]
                 },
+                db: DB {
+                    path: String::from("some/path")
+                },
+                twitter: Twitter {
+                    client_id: ClientId::new(String::from("some_client_id"))
+                },
+                mastodon: Mastodon {
+                    base_uri: String::from("https://mastodon.social"),
+                    access_token: AccessToken::new(String::from("some-access-token"))
+                },
+                url_shortener: UrlShortener {
+                    protocol: String::from("http"),
+                    domain: String::from("localhost:9000"),
+                    put_base_uri: None,
+                }
+            })
+        );
+    }
+}
