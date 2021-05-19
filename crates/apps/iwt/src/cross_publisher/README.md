@@ -1,3 +1,4 @@
 # Cross Publisher
 
-Syndicates microblog posts
+Syndicates microblog posts to Twitter and Mastodon
+
