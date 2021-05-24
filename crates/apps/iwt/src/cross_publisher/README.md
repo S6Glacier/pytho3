@@ -11,4 +11,4 @@ Incremental builds using `cargo`:
 $ nix develop -c cargo build -p iwt_cross_publisher
 ```
 
-Running the applicat
+Running the application using cargo (incremental build)
