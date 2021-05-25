@@ -15,4 +15,6 @@ Running the application using cargo (incremental build)
 
 ```bash
 $ nix develop -c cargo run -p iwt -- --config indieweb.toml cross-publish --help
-`
+```
+
+Running the appl
