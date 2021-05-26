@@ -20,4 +20,6 @@ $ nix develop -c cargo run -p iwt -- --config indieweb.toml cross-publish --help
 Running the application using nix:
 
 ```bash
-$ nix run .#iwt --config indieweb.toml cross-publis
+$ nix run .#iwt --config indieweb.toml cross-publish --help
+```
+
