@@ -7,4 +7,6 @@ use crate::commons::{text, url_shortener};
 use crate::social::Network;
 use async_trait::async_trait;
 use futures::TryFutureExt;
-use oauth2::AccessToke
+use oauth2::AccessToken;
+use reqwest::Client;
+use rss::Item;
