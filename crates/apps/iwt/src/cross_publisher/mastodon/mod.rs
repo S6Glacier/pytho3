@@ -12,4 +12,5 @@ use reqwest::Client;
 use rss::Item;
 
 pub struct Mastodon<USClient: url_shortener::Client> {
-   
+    base_uri: String,
+    access_token: A
