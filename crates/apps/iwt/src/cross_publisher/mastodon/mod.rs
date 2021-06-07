@@ -14,4 +14,5 @@ use rss::Item;
 pub struct Mastodon<USClient: url_shortener::Client> {
     base_uri: String,
     access_token: AccessToken,
-    http_client: Cl
+    http_client: Client,
+    url_shortener_clie
