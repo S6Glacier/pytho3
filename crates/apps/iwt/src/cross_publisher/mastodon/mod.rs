@@ -18,4 +18,5 @@ pub struct Mastodon<USClient: url_shortener::Client> {
     url_shortener_client: Rc<USClient>,
 }
 
-impl<USClient: url_shortener::Clie
+impl<USClient: url_shortener::Client> Mastodon<USClient> {
+  
