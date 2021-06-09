@@ -19,4 +19,5 @@ pub struct Mastodon<USClient: url_shortener::Client> {
 }
 
 impl<USClient: url_shortener::Client> Mastodon<USClient> {
-  
+    pub fn new(
+        base_uri: St
