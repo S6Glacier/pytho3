@@ -21,4 +21,5 @@ pub struct Mastodon<USClient: url_shortener::Client> {
 impl<USClient: url_shortener::Client> Mastodon<USClient> {
     pub fn new(
         base_uri: String,
-        access_token: Acc
+        access_token: AccessToken,
+        url_short
