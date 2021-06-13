@@ -26,4 +26,5 @@ impl<USClient: url_shortener::Client> Mastodon<USClient> {
     ) -> Self {
         Self {
             base_uri,
-      
+            access_token,
+          
