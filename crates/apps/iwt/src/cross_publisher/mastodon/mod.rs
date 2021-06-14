@@ -28,4 +28,6 @@ impl<USClient: url_shortener::Client> Mastodon<USClient> {
             base_uri,
             access_token,
             http_client: Client::new(),
-          
+            url_shortener_client,
+        }
+   
