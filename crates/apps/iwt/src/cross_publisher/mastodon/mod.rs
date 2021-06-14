@@ -30,4 +30,7 @@ impl<USClient: url_shortener::Client> Mastodon<USClient> {
             http_client: Client::new(),
             url_shortener_client,
         }
-   
+    }
+}
+
+#[derive(serde::Serialize
