@@ -35,4 +35,5 @@ impl<USClient: url_shortener::Client> Mastodon<USClient> {
 
 #[derive(serde::Serialize)]
 struct UpdateStatusRequest {
-    s
+    status: String,
+    spoil
