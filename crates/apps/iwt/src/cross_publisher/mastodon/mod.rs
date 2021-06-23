@@ -39,4 +39,5 @@ struct UpdateStatusRequest {
     spoiler_text: Option<String>,
 }
 
-#[der
+#[derive(serde::Deserialize)]
+struct 
