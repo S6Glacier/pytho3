@@ -40,4 +40,8 @@ struct UpdateStatusRequest {
 }
 
 #[derive(serde::Deserialize)]
-struct 
+struct MastodonResponse {
+    id: String,
+}
+
+#[async_tr
