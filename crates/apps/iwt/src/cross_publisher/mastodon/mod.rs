@@ -44,4 +44,5 @@ struct MastodonResponse {
     id: String,
 }
 
-#[async_tr
+#[async_trait(?Send)]
+impl<WHClient: 
