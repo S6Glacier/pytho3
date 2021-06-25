@@ -45,4 +45,4 @@ struct MastodonResponse {
 }
 
 #[async_trait(?Send)]
-impl<WHClient: 
+impl<WHClient: url_shortener::Client> Target for Ma
