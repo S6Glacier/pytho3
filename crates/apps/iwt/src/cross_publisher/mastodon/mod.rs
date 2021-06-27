@@ -48,3 +48,5 @@ struct MastodonResponse {
 impl<WHClient: url_shortener::Client> Target for Mastodon<WHClient> {
     async fn publish<'a>(
         &self,
+        post: &Item,
+        ex
