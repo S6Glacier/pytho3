@@ -50,4 +50,5 @@ impl<WHClient: url_shortener::Client> Target for Mastodon<WHClient> {
         &self,
         post: &Item,
         extension: &IwtRssExtension,
-    ) -> Result<SyndicatedPost, Box<dyn s
+    ) -> Result<SyndicatedPost, Box<dyn std::error::Error + 'a>> {
+      
