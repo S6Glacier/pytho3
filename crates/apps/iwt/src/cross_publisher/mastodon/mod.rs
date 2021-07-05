@@ -54,4 +54,5 @@ impl<WHClient: url_shortener::Client> Target for Mastodon<WHClient> {
         log::debug!("processing post: {:?},\nextension: {:?}", post, extension);
 
         let permashort_citation = self
-            .url
+            .url_shortener_client
+            .put_
