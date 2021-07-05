@@ -53,4 +53,5 @@ impl<WHClient: url_shortener::Client> Target for Mastodon<WHClient> {
     ) -> Result<SyndicatedPost, Box<dyn std::error::Error + 'a>> {
         log::debug!("processing post: {:?},\nextension: {:?}", post, extension);
 
-        let permas
+        let permashort_citation = self
+            .url
