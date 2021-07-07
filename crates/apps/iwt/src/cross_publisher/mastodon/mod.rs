@@ -55,4 +55,4 @@ impl<WHClient: url_shortener::Client> Target for Mastodon<WHClient> {
 
         let permashort_citation = self
             .url_shortener_client
-            .put_
+            .put_uri(post.link.as_ref().unwrap()
