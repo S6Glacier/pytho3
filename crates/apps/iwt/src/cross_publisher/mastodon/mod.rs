@@ -58,4 +58,4 @@ impl<WHClient: url_shortener::Client> Target for Mastodon<WHClient> {
             .put_uri(post.link.as_ref().unwrap())
             .await?;
 
-        
+        let status = text::shorten_with_pe
