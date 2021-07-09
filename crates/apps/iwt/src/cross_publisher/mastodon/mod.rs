@@ -59,4 +59,6 @@ impl<WHClient: url_shortener::Client> Target for Mastodon<WHClient> {
             .await?;
 
         let status = text::shorten_with_permashort_citation(
-            post.description
+            post.description().unwrap(),
+            500,
+ 
