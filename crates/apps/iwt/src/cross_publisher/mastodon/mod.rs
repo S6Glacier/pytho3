@@ -62,4 +62,5 @@ impl<WHClient: url_shortener::Client> Target for Mastodon<WHClient> {
             post.description().unwrap(),
             500,
             &permashort_citation,
-  
+            &extension.tags,
+   
