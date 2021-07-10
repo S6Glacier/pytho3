@@ -63,4 +63,6 @@ impl<WHClient: url_shortener::Client> Target for Mastodon<WHClient> {
             500,
             &permashort_citation,
             &extension.tags,
-   
+        );
+
+        self.h
