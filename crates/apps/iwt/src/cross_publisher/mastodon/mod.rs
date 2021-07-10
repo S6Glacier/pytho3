@@ -65,4 +65,5 @@ impl<WHClient: url_shortener::Client> Target for Mastodon<WHClient> {
             &extension.tags,
         );
 
-        self.h
+        self.http_client
+            // TODO: ma
