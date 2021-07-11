@@ -66,4 +66,4 @@ impl<WHClient: url_shortener::Client> Target for Mastodon<WHClient> {
         );
 
         self.http_client
-            // TODO: ma
+            // TODO: make mastodon instan
