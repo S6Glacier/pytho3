@@ -67,4 +67,4 @@ impl<WHClient: url_shortener::Client> Target for Mastodon<WHClient> {
 
         self.http_client
             // TODO: make mastodon instance configurable
-     
+            .post(format!("{}/api/
