@@ -69,4 +69,5 @@ impl<WHClient: url_shortener::Client> Target for Mastodon<WHClient> {
             // TODO: make mastodon instance configurable
             .post(format!("{}/api/v1/statuses", self.base_uri))
             .bearer_auth(self.access_token.secret().clone())
-            .json(&Upda
+            .json(&UpdateStatusRequest {
+                sta
