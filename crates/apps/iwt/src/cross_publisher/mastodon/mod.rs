@@ -71,4 +71,6 @@ impl<WHClient: url_shortener::Client> Target for Mastodon<WHClient> {
             .bearer_auth(self.access_token.secret().clone())
             .json(&UpdateStatusRequest {
                 status,
-                spoiler_text: extension.content_warning.c
+                spoiler_text: extension.content_warning.clone(),
+            })
+    
