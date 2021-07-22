@@ -74,4 +74,4 @@ impl<WHClient: url_shortener::Client> Target for Mastodon<WHClient> {
                 spoiler_text: extension.content_warning.clone(),
             })
             .send()
-           
+            .map_err(|err| Box::new(err) as Box<dyn
