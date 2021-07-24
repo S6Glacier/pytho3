@@ -75,4 +75,4 @@ impl<WHClient: url_shortener::Client> Target for Mastodon<WHClient> {
             })
             .send()
             .map_err(|err| Box::new(err) as Box<dyn std::error::Error>)
-         
+            .and_then(|response| async {
