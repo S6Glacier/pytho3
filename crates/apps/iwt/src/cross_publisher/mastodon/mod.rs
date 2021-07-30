@@ -78,4 +78,4 @@ impl<WHClient: url_shortener::Client> Target for Mastodon<WHClient> {
             .and_then(|response| async {
                 let body = response.text().await.expect("Response body expected");
 
-                serde_j
+                serde_json::from_str::<MastodonResponse>(&bod
