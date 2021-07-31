@@ -79,4 +79,4 @@ impl<WHClient: url_shortener::Client> Target for Mastodon<WHClient> {
                 let body = response.text().await.expect("Response body expected");
 
                 serde_json::from_str::<MastodonResponse>(&body)
-                    .map(|res
+                    .map(|response| SyndicatedPost::
