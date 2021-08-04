@@ -81,3 +81,5 @@ impl<WHClient: url_shortener::Client> Target for Mastodon<WHClient> {
                 serde_json::from_str::<MastodonResponse>(&body)
                     .map(|response| SyndicatedPost::new(Network::Mastodon, &response.id, post))
                     .map_err(|err| Box::new(err) as Box<dyn std::error::Error>)
+            })
+   
