@@ -85,4 +85,4 @@ impl<WHClient: url_shortener::Client> Target for Mastodon<WHClient> {
             .await
     }
 
-    f
+    fn network(&self) -> Network {
