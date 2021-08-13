@@ -87,4 +87,5 @@ impl<WHClient: url_shortener::Client> Target for Mastodon<WHClient> {
 
     fn network(&self) -> Network {
         Network::Mastodon
-    
+    }
+}
