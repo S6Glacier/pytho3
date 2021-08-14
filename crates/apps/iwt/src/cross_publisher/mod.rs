@@ -35,3 +35,24 @@ pub async fn execute(config: &Config, dry_run: bool) -> Result<(), Box<dyn std::
             token_db,
             Rc::clone(&url_shortener_client),
         )),
+        Box::new(Mastodon::new(
+            config.mastodon.base_uri.clone(),
+            config.mastodon.access_token.clone(),
+            Rc::clone(&url_shortener_client),
+        )),
+    ];
+
+    let storage = SqliteSyndycatedPostStorage::new(Rc::clone(&conn));
+    storage
+        .init_table()
+        .expect("Couldn't initialise post storage");
+
+    syndicate::syndicate(config, &rss::ReqwestClient, &targets, &storage, dry_run).await
+}
+
+#[cfg(test)]
+pub mod stubs {
+    pub use crate::cross_publisher::rss::stubs as rss;
+    pub use crate::cross_publisher::syndicated_post::stubs as syndycated_post;
+    pub use crate::cross_publisher::target::stubs as target;
+}
