@@ -3,4 +3,5 @@ use rss::Channel;
 
 pub struct ReqwestClient;
 
-#[async_t
+#[async_trait]
+pub trait Client
