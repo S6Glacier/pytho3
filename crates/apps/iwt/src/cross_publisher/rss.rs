@@ -4,4 +4,5 @@ use rss::Channel;
 pub struct ReqwestClient;
 
 #[async_trait]
-pub trait Client
+pub trait Client {
+    /// Loads RSS feed from the gi
