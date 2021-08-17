@@ -5,4 +5,5 @@ pub struct ReqwestClient;
 
 #[async_trait]
 pub trait Client {
-    /// Loads RSS feed from the gi
+    /// Loads RSS feed from the given URL a parse it into a Channel
+    
