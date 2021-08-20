@@ -12,4 +12,5 @@ pub trait Client {
 
 #[async_trait]
 impl Client for ReqwestClient {
-  
+    async fn get_channel(
+        &se
