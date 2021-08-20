@@ -7,4 +7,4 @@ pub struct ReqwestClient;
 pub trait Client {
     /// Loads RSS feed from the given URL a parse it into a Channel
     async fn get_channel(&self, url: &str)
-        -> Result<Cha
+        -> Result<Channel, Box<dyn std::error::Error + '
