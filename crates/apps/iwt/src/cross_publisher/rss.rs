@@ -10,4 +10,6 @@ pub trait Client {
         -> Result<Channel, Box<dyn std::error::Error + 'static>>;
 }
 
-#[async_t
+#[async_trait]
+impl Client for ReqwestClient {
+  
