@@ -15,4 +15,5 @@ impl Client for ReqwestClient {
     async fn get_channel(
         &self,
         url: &str,
-    ) -> Result<Channel, Box<dyn std::error::Error + 's
+    ) -> Result<Channel, Box<dyn std::error::Error + 'static>> {
+        let feed = 
