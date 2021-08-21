@@ -15,4 +15,4 @@ impl Client for ReqwestClient {
     async fn get_channel(
         &self,
         url: &str,
-    ) -> Result
+    ) -> Result<Channel, Box<dyn std::error::Error + 's
