@@ -16,4 +16,6 @@ impl Client for ReqwestClient {
         &self,
         url: &str,
     ) -> Result<Channel, Box<dyn std::error::Error + 'static>> {
-        let feed = reqwest::get(url).await?.bytes().a
+        let feed = reqwest::get(url).await?.bytes().await?;
+
+        log::debug!("Re
