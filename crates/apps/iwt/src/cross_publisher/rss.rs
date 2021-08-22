@@ -18,4 +18,6 @@ impl Client for ReqwestClient {
     ) -> Result<Channel, Box<dyn std::error::Error + 'static>> {
         let feed = reqwest::get(url).await?.bytes().await?;
 
-        log::debug!("Response received from url: {}", u
+        log::debug!("Response received from url: {}", url);
+
+        let channel = Ch
