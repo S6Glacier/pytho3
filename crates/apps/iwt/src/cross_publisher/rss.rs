@@ -20,4 +20,6 @@ impl Client for ReqwestClient {
 
         log::debug!("Response received from url: {}", url);
 
-        let channel = Ch
+        let channel = Channel::read_from(&feed[..])?;
+
+      
