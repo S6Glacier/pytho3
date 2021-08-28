@@ -23,4 +23,5 @@ impl Client for ReqwestClient {
         let channel = Channel::read_from(&feed[..])?;
 
         log::debug!(
-            "Successfully loaded channel \"{}\", with {} 
+            "Successfully loaded channel \"{}\", with {} items",
+            ch
