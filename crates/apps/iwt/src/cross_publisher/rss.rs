@@ -22,4 +22,5 @@ impl Client for ReqwestClient {
 
         let channel = Channel::read_from(&feed[..])?;
 
-      
+        log::debug!(
+            "Succes
