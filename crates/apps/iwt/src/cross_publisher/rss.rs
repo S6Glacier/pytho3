@@ -25,4 +25,5 @@ impl Client for ReqwestClient {
         log::debug!(
             "Successfully loaded channel \"{}\", with {} items",
             channel.title(),
-           
+            channel.items().len()
+        
