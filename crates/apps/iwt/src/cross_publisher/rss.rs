@@ -26,4 +26,9 @@ impl Client for ReqwestClient {
             "Successfully loaded channel \"{}\", with {} items",
             channel.title(),
             channel.items().len()
-        
+        );
+        Ok(channel)
+    }
+}
+
+pub
