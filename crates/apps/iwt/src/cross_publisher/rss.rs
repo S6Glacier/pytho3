@@ -31,4 +31,7 @@ impl Client for ReqwestClient {
     }
 }
 
-pub
+pub mod tests {}
+
+#[cfg(test)]
+pub mod st
