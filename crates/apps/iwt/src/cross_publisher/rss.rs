@@ -34,4 +34,5 @@ impl Client for ReqwestClient {
 pub mod tests {}
 
 #[cfg(test)]
-pub mod st
+pub mod stubs {
+    use std::{collections::Ha
