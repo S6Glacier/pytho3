@@ -40,4 +40,4 @@ pub mod stubs {
     use async_mutex::Mutex;
     use async_trait::async_trait;
     use reqwest::Url;
-    use rss::{extension::Exte
+    use rss::{extension::ExtensionMap, Channel, GuidBui
