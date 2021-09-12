@@ -42,4 +42,6 @@ pub mod stubs {
     use reqwest::Url;
     use rss::{extension::ExtensionMap, Channel, GuidBuilder, Item};
 
-    use crate::{cross_publisher::rss_item_ext::stubs::create_iwt_extension_map, s
+    use crate::{cross_publisher::rss_item_ext::stubs::create_iwt_extension_map, social};
+
+    use super::Clie
