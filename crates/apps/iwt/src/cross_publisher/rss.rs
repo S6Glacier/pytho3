@@ -44,4 +44,6 @@ pub mod stubs {
 
     use crate::{cross_publisher::rss_item_ext::stubs::create_iwt_extension_map, social};
 
-    use super::Clie
+    use super::Client;
+
+    pub struct StubRs
