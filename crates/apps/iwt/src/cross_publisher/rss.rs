@@ -46,4 +46,5 @@ pub mod stubs {
 
     use super::Client;
 
-    pub struct StubRs
+    pub struct StubRssClient {
+        pub urls: Arc<
