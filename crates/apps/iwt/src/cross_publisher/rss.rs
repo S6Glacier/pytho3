@@ -48,4 +48,7 @@ pub mod stubs {
 
     pub struct StubRssClient {
         pub urls: Arc<Mutex<Vec<String>>>,
-        items: Has
+        items: HashMap<String, Vec<Item>>,
+    }
+
+   
