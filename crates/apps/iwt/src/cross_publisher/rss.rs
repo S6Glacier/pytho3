@@ -47,4 +47,5 @@ pub mod stubs {
     use super::Client;
 
     pub struct StubRssClient {
-        pub urls: Arc<
+        pub urls: Arc<Mutex<Vec<String>>>,
+        items: Has
