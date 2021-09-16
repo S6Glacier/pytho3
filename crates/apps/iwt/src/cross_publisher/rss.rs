@@ -51,4 +51,5 @@ pub mod stubs {
         items: HashMap<String, Vec<Item>>,
     }
 
-   
+    impl StubRssClient {
+        pub fn 
