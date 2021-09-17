@@ -53,4 +53,5 @@ pub mod stubs {
 
     impl StubRssClient {
         pub fn new(items: &HashMap<String, Vec<Item>>) -> Self {
-            Sel
+            Self {
+                items: items.clone()
