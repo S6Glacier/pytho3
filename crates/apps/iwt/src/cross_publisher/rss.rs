@@ -52,4 +52,4 @@ pub mod stubs {
     }
 
     impl StubRssClient {
-        pub fn 
+        pub fn new(items: &HashMap<String, Vec<It
