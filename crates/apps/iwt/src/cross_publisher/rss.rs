@@ -54,4 +54,5 @@ pub mod stubs {
     impl StubRssClient {
         pub fn new(items: &HashMap<String, Vec<Item>>) -> Self {
             Self {
-                items: items.clone()
+                items: items.clone(),
+                urls: Arc::defau
