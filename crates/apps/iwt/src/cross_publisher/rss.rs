@@ -55,4 +55,7 @@ pub mod stubs {
         pub fn new(items: &HashMap<String, Vec<Item>>) -> Self {
             Self {
                 items: items.clone(),
-                urls: Arc::defau
+                urls: Arc::default(),
+            }
+        }
+   
