@@ -60,4 +60,4 @@ pub mod stubs {
         }
     }
 
-    pub fn gen_items(urls: &
+    pub fn gen_items(urls: &[&str]) -> HashMap<String, Vec<Item>> {
