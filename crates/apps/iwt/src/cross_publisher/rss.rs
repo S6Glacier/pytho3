@@ -58,4 +58,6 @@ pub mod stubs {
                 urls: Arc::default(),
             }
         }
-   
+    }
+
+    pub fn gen_items(urls: &
