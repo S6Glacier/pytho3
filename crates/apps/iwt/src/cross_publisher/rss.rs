@@ -61,4 +61,7 @@ pub mod stubs {
     }
 
     pub fn gen_items(urls: &[&str]) -> HashMap<String, Vec<Item>> {
-        gen_items_with_extensio
+        gen_items_with_extension(
+            urls,
+            4,
+ 
