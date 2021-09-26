@@ -65,4 +65,5 @@ pub mod stubs {
             urls,
             4,
             0,
-            &create_iwt_e
+            &create_iwt_extension_map(
+                &[soc
