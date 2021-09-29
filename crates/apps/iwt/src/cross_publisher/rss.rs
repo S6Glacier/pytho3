@@ -66,4 +66,4 @@ pub mod stubs {
             4,
             0,
             &create_iwt_extension_map(
-                &[soc
+                &[social::Network::Mastodon, social:
