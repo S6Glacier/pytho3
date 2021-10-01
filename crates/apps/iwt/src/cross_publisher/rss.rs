@@ -68,4 +68,5 @@ pub mod stubs {
             &create_iwt_extension_map(
                 &[social::Network::Mastodon, social::Network::Twitter],
                 None,
+                &Vec::new(),
            
