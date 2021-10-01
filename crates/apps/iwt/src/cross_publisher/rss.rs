@@ -69,4 +69,8 @@ pub mod stubs {
                 &[social::Network::Mastodon, social::Network::Twitter],
                 None,
                 &Vec::new(),
-           
+            ),
+        )
+    }
+
+    pub fn
