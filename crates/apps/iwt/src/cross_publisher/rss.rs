@@ -75,4 +75,6 @@ pub mod stubs {
 
     pub fn gen_items_with_extension(
         urls: &[&str],
-        count
+        count: usize,
+        offset: usize,
+        ext
