@@ -73,4 +73,6 @@ pub mod stubs {
         )
     }
 
-    pub fn gen_items_with_extension
+    pub fn gen_items_with_extension(
+        urls: &[&str],
+        count
