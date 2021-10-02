@@ -73,4 +73,4 @@ pub mod stubs {
         )
     }
 
-    pub fn
+    pub fn gen_items_with_extension
