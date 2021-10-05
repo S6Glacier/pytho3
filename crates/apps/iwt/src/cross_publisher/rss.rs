@@ -77,4 +77,5 @@ pub mod stubs {
         urls: &[&str],
         count: usize,
         offset: usize,
-        ext
+        extensions: &ExtensionMap,
+    ) ->
