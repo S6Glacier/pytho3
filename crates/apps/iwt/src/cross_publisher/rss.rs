@@ -78,4 +78,5 @@ pub mod stubs {
         count: usize,
         offset: usize,
         extensions: &ExtensionMap,
-    ) ->
+    ) -> HashMap<String, Vec<Item>> {
+    
