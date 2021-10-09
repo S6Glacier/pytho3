@@ -81,4 +81,5 @@ pub mod stubs {
     ) -> HashMap<String, Vec<Item>> {
         let mut result = HashMap::new();
         for url in urls {
-        
+            let mut items = Vec::new();
+     
