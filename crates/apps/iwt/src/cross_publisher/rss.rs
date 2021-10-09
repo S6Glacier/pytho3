@@ -79,4 +79,5 @@ pub mod stubs {
         offset: usize,
         extensions: &ExtensionMap,
     ) -> HashMap<String, Vec<Item>> {
-    
+        let mut result = HashMap::new();
+     
