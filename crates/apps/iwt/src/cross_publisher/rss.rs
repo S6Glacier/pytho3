@@ -83,4 +83,5 @@ pub mod stubs {
         for url in urls {
             let mut items = Vec::new();
             for i in offset..(count + offset) {
-                
+                items.push(Item {
+        
