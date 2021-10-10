@@ -82,4 +82,4 @@ pub mod stubs {
         let mut result = HashMap::new();
         for url in urls {
             let mut items = Vec::new();
-     
+            for i in offset..
