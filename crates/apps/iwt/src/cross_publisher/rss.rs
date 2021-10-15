@@ -87,4 +87,5 @@ pub mod stubs {
                     title: Some(format!("This is pos #{i} at {url}")),
                     link: Some(format!("{url}/post-{i}")),
                     guid: Some(
-                
+                        GuidBuilder::default()
+   
