@@ -86,4 +86,5 @@ pub mod stubs {
                 items.push(Item {
                     title: Some(format!("This is pos #{i} at {url}")),
                     link: Some(format!("{url}/post-{i}")),
+                    guid: Some(
                 
