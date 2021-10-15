@@ -85,4 +85,5 @@ pub mod stubs {
             for i in offset..(count + offset) {
                 items.push(Item {
                     title: Some(format!("This is pos #{i} at {url}")),
-                    link: Some(format!("{url}
+                    link: Some(format!("{url}/post-{i}")),
+                
