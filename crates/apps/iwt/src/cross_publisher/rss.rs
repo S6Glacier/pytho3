@@ -88,4 +88,4 @@ pub mod stubs {
                     link: Some(format!("{url}/post-{i}")),
                     guid: Some(
                         GuidBuilder::default()
-   
+                            .val
