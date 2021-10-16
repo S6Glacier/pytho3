@@ -89,3 +89,4 @@ pub mod stubs {
                     guid: Some(
                         GuidBuilder::default()
                             .value(format!("{url}/post-{i}"))
+                            .b
