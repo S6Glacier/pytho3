@@ -92,4 +92,5 @@ pub mod stubs {
                             .build(),
                     ),
                     extensions: extensions.clone(),
-                    
+                    ..Default::default()
+                
