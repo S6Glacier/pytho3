@@ -91,4 +91,4 @@ pub mod stubs {
                             .value(format!("{url}/post-{i}"))
                             .build(),
                     ),
-      
+                    extensions: exten
