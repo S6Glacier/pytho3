@@ -95,4 +95,4 @@ pub mod stubs {
                     ..Default::default()
                 });
             }
-          
+            result.insert((*url).to_stri
