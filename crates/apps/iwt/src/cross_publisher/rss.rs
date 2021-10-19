@@ -97,4 +97,8 @@ pub mod stubs {
             }
             result.insert((*url).to_string(), items);
         }
-        re
+        result
+    }
+
+    #[async_trait]
+    i
