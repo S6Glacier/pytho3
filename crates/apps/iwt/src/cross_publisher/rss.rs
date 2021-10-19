@@ -101,4 +101,5 @@ pub mod stubs {
     }
 
     #[async_trait]
-    i
+    impl Client for StubRssClient {
+ 
