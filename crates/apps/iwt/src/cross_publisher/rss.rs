@@ -104,4 +104,5 @@ pub mod stubs {
     impl Client for StubRssClient {
         async fn get_channel(
             &self,
-            url
+            url: &str,
+        ) -> Result<Channel, B
