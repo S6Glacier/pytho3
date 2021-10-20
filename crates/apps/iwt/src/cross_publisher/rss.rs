@@ -105,4 +105,4 @@ pub mod stubs {
         async fn get_channel(
             &self,
             url: &str,
-        ) -> Result<Channel, B
+        ) -> Result<Channel, Box<dyn std::error::Error + 'stat
