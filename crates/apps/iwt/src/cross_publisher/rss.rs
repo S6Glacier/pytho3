@@ -106,4 +106,5 @@ pub mod stubs {
             &self,
             url: &str,
         ) -> Result<Channel, Box<dyn std::error::Error + 'static>> {
-            let mut ur
+            let mut urls = self.urls.lock().await;
+      
