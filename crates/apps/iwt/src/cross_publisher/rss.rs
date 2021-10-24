@@ -109,4 +109,5 @@ pub mod stubs {
             let mut urls = self.urls.lock().await;
             urls.push(url.to_owned());
 
-            match Url::par
+            match Url::parse(url) {
+                Ok(parse
