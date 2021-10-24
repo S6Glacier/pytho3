@@ -110,4 +110,5 @@ pub mod stubs {
             urls.push(url.to_owned());
 
             match Url::parse(url) {
-                Ok(parse
+                Ok(parsed) => {
+                    
