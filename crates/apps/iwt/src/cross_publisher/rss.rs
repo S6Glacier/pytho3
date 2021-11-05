@@ -112,4 +112,5 @@ pub mod stubs {
             match Url::parse(url) {
                 Ok(parsed) => {
                     let should_fail = parsed
-   
+                        .query_pairs()
+ 
