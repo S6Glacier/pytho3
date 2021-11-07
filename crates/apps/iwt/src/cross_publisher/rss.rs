@@ -113,4 +113,4 @@ pub mod stubs {
                 Ok(parsed) => {
                     let should_fail = parsed
                         .query_pairs()
-                        .any(|(key
+                        .any(|(key, value)| &*key == "failure" && &
