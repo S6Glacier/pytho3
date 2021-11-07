@@ -115,4 +115,4 @@ pub mod stubs {
                         .query_pairs()
                         .any(|(key, value)| &*key == "failure" && &*value == "1");
 
-       
+                    if should_fail {
