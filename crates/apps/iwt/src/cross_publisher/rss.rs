@@ -116,4 +116,5 @@ pub mod stubs {
                         .any(|(key, value)| &*key == "failure" && &*value == "1");
 
                     if should_fail {
-                        Err(B
+                        Err(Box::new(RssClientError))
+                    } el
