@@ -117,4 +117,5 @@ pub mod stubs {
 
                     if should_fail {
                         Err(Box::new(RssClientError))
-                    } el
+                    } else {
+                        
