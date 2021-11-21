@@ -118,4 +118,5 @@ pub mod stubs {
                     if should_fail {
                         Err(Box::new(RssClientError))
                     } else {
-                        
+                        let channel = Channel {
+               
