@@ -119,4 +119,5 @@ pub mod stubs {
                         Err(Box::new(RssClientError))
                     } else {
                         let channel = Channel {
-                            items: self.items.get(&url.to_string()).unwrap(
+                            items: self.items.get(&url.to_string()).unwrap().clone(),
+                   
