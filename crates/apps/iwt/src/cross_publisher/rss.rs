@@ -121,4 +121,4 @@ pub mod stubs {
                         let channel = Channel {
                             items: self.items.get(&url.to_string()).unwrap().clone(),
                             link: url.to_owned(),
-  
+                            ..Default::d
