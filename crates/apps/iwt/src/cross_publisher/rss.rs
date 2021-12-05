@@ -124,4 +124,6 @@ pub mod stubs {
                             ..Default::default()
                         };
 
-                       
+                        Ok(channel)
+                    }
+      
