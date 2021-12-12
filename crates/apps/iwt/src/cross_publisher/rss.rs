@@ -127,4 +127,4 @@ pub mod stubs {
                         Ok(channel)
                     }
                 }
-                _ => p
+                _ => panic!("Invalid url: {url}"),
