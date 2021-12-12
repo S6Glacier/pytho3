@@ -132,4 +132,5 @@ pub mod stubs {
         }
     }
 
-    #[der
+    #[derive(Debug)]
+    pub struct RssCl
