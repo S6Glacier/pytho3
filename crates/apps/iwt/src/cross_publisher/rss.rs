@@ -128,3 +128,8 @@ pub mod stubs {
                     }
                 }
                 _ => panic!("Invalid url: {url}"),
+            }
+        }
+    }
+
+    #[der
