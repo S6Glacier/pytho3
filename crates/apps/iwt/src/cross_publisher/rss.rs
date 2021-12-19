@@ -134,4 +134,5 @@ pub mod stubs {
 
     #[derive(Debug)]
     pub struct RssClientError;
-    impl Display for R
+    impl Display for RssClientError {
+        fn fmt(&
