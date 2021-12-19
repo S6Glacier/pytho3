@@ -133,4 +133,5 @@ pub mod stubs {
     }
 
     #[derive(Debug)]
-    pub struct RssCl
+    pub struct RssClientError;
+    impl Display for R
