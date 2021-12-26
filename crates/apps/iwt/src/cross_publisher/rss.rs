@@ -135,4 +135,4 @@ pub mod stubs {
     #[derive(Debug)]
     pub struct RssClientError;
     impl Display for RssClientError {
-        fn fmt(&self, f: &mut std::fmt::Format
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result 
