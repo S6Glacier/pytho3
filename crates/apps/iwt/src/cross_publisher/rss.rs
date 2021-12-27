@@ -139,4 +139,5 @@ pub mod stubs {
             write!(f, "RssClientError")
         }
     }
-    impl std::error::Error for RssClient
+    impl std::error::Error for RssClientError {}
+}
