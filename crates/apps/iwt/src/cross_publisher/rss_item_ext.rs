@@ -82,3 +82,27 @@ impl RssItemExt for Item {
                 }
             })
     }
+}
+
+#[cfg(test)]
+pub mod stubs {
+    use std::collections::BTreeMap;
+
+    use rss::extension::{Extension, ExtensionBuilder, ExtensionMap};
+
+    use crate::social;
+
+    fn create_extension(name: &str, value: &str) -> Extension {
+        ExtensionBuilder::default()
+            .name(name.to_string())
+            .value(Some(value.to_string()))
+            .build()
+    }
+
+    fn create_extension_with_children(
+        name: &str,
+        children: Vec<(&str, Vec<Extension>)>,
+    ) -> Extension {
+        let mut children_map: BTreeMap<String, Vec<Extension>> = BTreeMap::new();
+
+        for (key, exts) in children {
