@@ -106,3 +106,40 @@ pub mod stubs {
         let mut children_map: BTreeMap<String, Vec<Extension>> = BTreeMap::new();
 
         for (key, exts) in children {
+            children_map.insert(key.to_string(), exts);
+        }
+
+        ExtensionBuilder::default()
+            .name(name.to_string())
+            .children(children_map)
+            .build()
+    }
+
+    fn create_iwt_extension(
+        target_networks: &[social::Network],
+        content_warning: Option<String>,
+        tags: &[&str],
+    ) -> Extension {
+        let mut children = vec![
+            (
+                "targetNetworks",
+                vec![create_extension_with_children(
+                    "iwt:targetNetworks",
+                    vec![(
+                        "targetNetwork",
+                        target_networks
+                            .iter()
+                            .map(|target_network| {
+                                create_extension("iwt:targetNetwork", &target_network.to_string())
+                            })
+                            .collect(),
+                    )],
+                )],
+            ),
+            (
+                "tags",
+                vec![create_extension_with_children(
+                    "iwt:tags",
+                    vec![(
+                        "tag",
+                        tags.iter()
