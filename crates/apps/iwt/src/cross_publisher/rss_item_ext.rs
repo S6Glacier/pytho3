@@ -166,3 +166,39 @@ pub mod stubs {
     ) -> ExtensionMap {
         let mut iwt_root = BTreeMap::new();
         iwt_root.insert(
+            "extension".to_string(),
+            vec![create_iwt_extension(target_networks, content_warning, tags)],
+        );
+
+        let mut extensions = BTreeMap::new();
+        extensions.insert("iwt".to_string(), iwt_root);
+
+        extensions
+    }
+}
+
+#[cfg(test)]
+mod test {
+    use crate::{
+        cross_publisher::rss_item_ext::{IwtRssExtension, IwtRssTargetNetwork},
+        social,
+    };
+    use rss::Item;
+
+    use super::stubs::create_iwt_extension_map;
+    use super::RssItemExt;
+
+    #[test]
+    fn test_get_iwt_extension_should_return_none_when_extension_is_not_available() {
+        let item = Item::default();
+
+        let extension = item.get_iwt_extension();
+
+        assert_eq!(extension, None);
+    }
+
+    #[test]
+    fn test_get_iwt_extension_should_return_the_extension_with_zero_target_networks_if_no_children()
+    {
+        let item = Item {
+            extensions: create_iwt_extension_map(&[], None, &Vec::new()),
