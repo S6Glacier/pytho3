@@ -143,3 +143,26 @@ pub mod stubs {
                     vec![(
                         "tag",
                         tags.iter()
+                            .map(|tag| create_extension("iwt:tag", tag))
+                            .collect(),
+                    )],
+                )],
+            ),
+        ];
+
+        if let Some(cw) = content_warning {
+            children.push((
+                "contentWarning",
+                vec![create_extension("iwt:contentWarning", cw.as_str())],
+            ));
+        }
+
+        create_extension_with_children("iwt:extension", children)
+    }
+    pub fn create_iwt_extension_map(
+        target_networks: &[social::Network],
+        content_warning: Option<String>,
+        tags: &[&str],
+    ) -> ExtensionMap {
+        let mut iwt_root = BTreeMap::new();
+        iwt_root.insert(
