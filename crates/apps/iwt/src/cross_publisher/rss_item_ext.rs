@@ -202,3 +202,28 @@ mod test {
     {
         let item = Item {
             extensions: create_iwt_extension_map(&[], None, &Vec::new()),
+            ..Default::default()
+        };
+        let extension = item.get_iwt_extension();
+
+        assert_eq!(
+            extension,
+            Some(IwtRssExtension {
+                target_networks: vec![],
+                content_warning: None,
+                tags: Vec::new()
+            })
+        );
+    }
+
+    #[test]
+    fn test_get_iwt_extension_should_return_the_extension_with_target_networks() {
+        let item = Item {
+            extensions: create_iwt_extension_map(
+                &[social::Network::Mastodon, social::Network::Twitter],
+                None,
+                &Vec::new(),
+            ),
+            ..Default::default()
+        };
+        let extension = item.get_iwt_extension();
