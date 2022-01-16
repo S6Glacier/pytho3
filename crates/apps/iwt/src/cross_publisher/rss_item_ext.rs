@@ -283,3 +283,12 @@ mod test {
         assert_eq!(
             extension,
             Some(IwtRssExtension {
+                target_networks: vec![IwtRssTargetNetwork {
+                    network: social::Network::Mastodon
+                },],
+                content_warning: Some("This is a content_warning".to_string()),
+                tags: vec!["tag-1".to_string(), "tag-2".to_string()]
+            })
+        );
+    }
+}
