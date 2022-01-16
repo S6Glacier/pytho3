@@ -261,3 +261,25 @@ mod test {
             Some(IwtRssExtension {
                 target_networks: vec![IwtRssTargetNetwork {
                     network: social::Network::Mastodon
+                },],
+                content_warning: Some("This is a content_warning".to_string()),
+                tags: Vec::new()
+            })
+        );
+    }
+
+    #[test]
+    fn test_get_iwt_extension_should_return_the_extension_with_tags() {
+        let item = Item {
+            extensions: create_iwt_extension_map(
+                &[social::Network::Mastodon],
+                Some("This is a content_warning".to_string()),
+                &["tag-1", "tag-2"],
+            ),
+            ..Default::default()
+        };
+        let extension = item.get_iwt_extension();
+
+        assert_eq!(
+            extension,
+            Some(IwtRssExtension {
