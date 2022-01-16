@@ -227,3 +227,37 @@ mod test {
             ..Default::default()
         };
         let extension = item.get_iwt_extension();
+
+        assert_eq!(
+            extension,
+            Some(IwtRssExtension {
+                target_networks: vec![
+                    IwtRssTargetNetwork {
+                        network: social::Network::Mastodon
+                    },
+                    IwtRssTargetNetwork {
+                        network: social::Network::Twitter
+                    },
+                ],
+                content_warning: None,
+                tags: Vec::new()
+            })
+        );
+    }
+    #[test]
+    fn test_get_iwt_extension_should_return_the_extension_with_content_warning() {
+        let item = Item {
+            extensions: create_iwt_extension_map(
+                &[social::Network::Mastodon],
+                Some("This is a content_warning".to_string()),
+                &Vec::new(),
+            ),
+            ..Default::default()
+        };
+        let extension = item.get_iwt_extension();
+
+        assert_eq!(
+            extension,
+            Some(IwtRssExtension {
+                target_networks: vec![IwtRssTargetNetwork {
+                    network: social::Network::Mastodon
