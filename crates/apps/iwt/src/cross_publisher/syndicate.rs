@@ -49,3 +49,44 @@ async fn syndycate_channel<S: syndicated_post::Storage>(
 
             async {
                 match stored {
+                    Ok(None) => {
+                        log::info!(
+                            "{} |> Post not found in DB, syndycating to {}",
+                            post.link().unwrap(),
+                            target.network().to_string()
+                        );
+
+                        if let Some(extension) = post.get_iwt_extension() {
+                            if extension
+                                .target_networks
+                                .iter()
+                                .any(|tn| tn.network == target.network())
+                            {
+                                if dry_run {
+                                    log::info!(
+                                        "{} |> Publishing to {} is skipped due to --dry-run",
+                                        post.link().unwrap(),
+                                        target.network().to_string()
+                                    );
+                                    Ok(())
+                                } else {
+                                    log::info!(
+                                        "{} |> Publishing to {}",
+                                        post.link().unwrap(),
+                                        target.network().to_string()
+                                    );
+                                    let result = target
+                                        .publish(post, &extension)
+                                        .map(|result| {
+                                            result.and_then(|syndicated| {
+                                                storage.store(syndicated).map_err(|err| {
+                                                    Box::new(err) as Box<dyn std::error::Error>
+                                                })
+                                            })
+                                        })
+                                        .await;
+                                    log::info!(
+                                        "{} |> Published to {}",
+                                        post.link().unwrap(),
+                                        target.network().to_string()
+                                    );
