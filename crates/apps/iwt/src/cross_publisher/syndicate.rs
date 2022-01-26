@@ -90,3 +90,35 @@ async fn syndycate_channel<S: syndicated_post::Storage>(
                                         post.link().unwrap(),
                                         target.network().to_string()
                                     );
+
+                                    result
+                                }
+                            } else {
+                                log::info!(
+                                    "{} |> Not configured to be syndicated to {}",
+                                    post.link().unwrap(),
+                                    target.network().to_string()
+                                );
+                                Ok(())
+                            }
+                        } else {
+                            Err(
+                                Box::new(IwtError::new("Rss Item doesn't have an IWT extension"))
+                                    as Box<dyn std::error::Error>,
+                            )
+                        }
+                    }
+                    Ok(Some(_)) => {
+                        log::info!(
+                            "{} |> Has been already syndicated to {}",
+                            post.link().unwrap(),
+                            target.network().to_string()
+                        );
+                        Ok(())
+                    }
+                    Err(e) => Err(Box::new(e) as Box<dyn std::error::Error>),
+                }
+            }
+        })
+    })
+    .await
