@@ -122,3 +122,29 @@ async fn syndycate_channel<S: syndicated_post::Storage>(
         })
     })
     .await
+}
+
+async fn run_and_collect<C, I, F, Fu>(items: C, f: F) -> Result<(), Box<dyn std::error::Error>>
+where
+    C: Iterator<Item = I>,
+    // TODO: understand why this didn't work: Fn(I) -> dyn Future<Output = Result<(), Box<dyn std::error::Error>>>
+    //       or: Fn(I) -> Pin<Box<dyn Future<Output = Result<(), Box<dyn std::error::Error>>>>>
+    F: Fn(I) -> Fu,
+    Fu: Future<Output = Result<(), Box<dyn std::error::Error>>>,
+{
+    futures::stream::iter(items)
+        .map(f)
+        .buffer_unordered(10)
+        .collect::<Vec<_>>()
+        .await
+        .into_iter()
+        .collect()
+}
+
+#[cfg(test)]
+mod test {
+    use std::collections::HashMap;
+    use std::sync::Arc;
+
+    use oauth2::{AccessToken, ClientId};
+    use rss::Item;
