@@ -228,3 +228,30 @@ mod test {
         )
         .await
         .expect("Should be Ok()");
+
+        let calls = (*client_calls).lock().await;
+
+        assert_eq!(*calls, vec![feed1, feed2]);
+    }
+
+    #[tokio::test]
+    async fn test_syndycate_publishes_posts_to_targets() {
+        let feed = "http://example.com/rss.xml";
+        let config = config(vec![feed.to_string()]);
+
+        let client = StubRssClient::new(&gen_items(&[feed]));
+        let stub_target = StubTarget::new(Network::Mastodon);
+        let target_calls = Arc::clone(&stub_target.calls);
+        let targets = vec![stub_target.into()];
+
+        syndicate(
+            &config,
+            &client,
+            &targets,
+            &SyndicatedPostStorageStub::default(),
+            false,
+        )
+        .await
+        .expect("Should be Ok()");
+
+        let calls = (*target_calls).lock().await;
