@@ -148,3 +148,44 @@ mod test {
 
     use oauth2::{AccessToken, ClientId};
     use rss::Item;
+
+    use super::syndicated_post::{Storage, SyndicatedPost};
+    use crate::config::{Config, Mastodon, Rss, Twitter, UrlShortener, DB};
+    use crate::cross_publisher::rss::stubs::gen_items_with_extension;
+    use crate::cross_publisher::rss_item_ext::stubs::create_iwt_extension_map;
+    use crate::cross_publisher::rss_item_ext::RssItemExt;
+    use crate::cross_publisher::stubs::rss::{gen_items, StubRssClient};
+    use crate::cross_publisher::stubs::syndycated_post::SyndicatedPostStorageStub;
+    use crate::cross_publisher::stubs::target::FailingStubTarget;
+    use crate::cross_publisher::stubs::target::StubTarget;
+    use crate::social::{self, Network};
+
+    use super::syndicate;
+
+    fn config(urls: Vec<String>) -> Config {
+        Config {
+            rss: Rss { urls },
+            db: DB {
+                path: String::from("some/path"),
+            },
+            twitter: Twitter {
+                client_id: ClientId::new(String::from("some_client_id")),
+            },
+            mastodon: Mastodon {
+                base_uri: String::from("https://example.com/mastodon"),
+                access_token: AccessToken::new(String::from("some-access-token")),
+            },
+            url_shortener: UrlShortener {
+                protocol: String::from("http"),
+                domain: String::from("shortly"),
+                put_base_uri: Some(String::from("http://localhost:9000")),
+            },
+        }
+    }
+
+    #[tokio::test]
+    async fn test_syndycate_fetches_a_feed() {
+        let feed = "http://example.com/rss.xml";
+        let config = config(vec![feed.to_string()]);
+
+        let client = StubRssClient::new(&gen_items(&[feed]));
