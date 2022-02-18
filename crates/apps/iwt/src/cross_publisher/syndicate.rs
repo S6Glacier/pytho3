@@ -255,3 +255,29 @@ mod test {
         .expect("Should be Ok()");
 
         let calls = (*target_calls).lock().await;
+
+        assert_eq!(*calls, *gen_items(&[feed]).get(feed).unwrap());
+    }
+
+    #[tokio::test]
+    async fn test_syndycate_should_skip_published_posts() {
+        let feed = "http://example.com/rss.xml";
+        let config = config(vec![feed.to_string()]);
+
+        let client = StubRssClient::new(&gen_items(&[feed]));
+        let stub_target = StubTarget::new(Network::Mastodon);
+        let target_calls = Arc::clone(&stub_target.calls);
+        let targets = vec![stub_target.into()];
+
+        let items = gen_items(&[feed]);
+        let storage = SyndicatedPostStorageStub::default();
+
+        for item in items.get(feed).unwrap() {
+            storage
+                .store(SyndicatedPost::new(
+                    Network::Mastodon,
+                    &String::from("id"),
+                    item,
+                ))
+                .unwrap();
+        }
