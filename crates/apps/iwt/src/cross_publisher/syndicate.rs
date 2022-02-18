@@ -315,3 +315,35 @@ mod test {
         )
         .await
         .expect("Should be Ok()");
+
+        let calls1 = (*target_calls1).lock().await;
+        let calls2 = (*target_calls2).lock().await;
+
+        let expected: Vec<Item> = merged_items(items, &[feed1, feed2]);
+
+        assert_eq!(*calls1, expected);
+        assert_eq!(*calls2, expected);
+    }
+
+    #[rustfmt::skip]
+    fn gen_target_combinations(feed1: &str, feed2: &str) -> HashMap<String, Vec<Item>> {
+        let mut items: HashMap<String, Vec<Item>> = gen_items_with_extension(&[feed1], 2, 0, &create_iwt_extension_map(&[social::Network::Mastodon], None, &Vec::new()));
+        items.get_mut(feed1)
+            .unwrap()
+            .extend(
+                gen_items_with_extension(&[feed1], 1, 2, &create_iwt_extension_map(&[social::Network::Twitter], None, &Vec::new()))
+                    .get(feed1).unwrap().iter().cloned()
+            );
+        items.get_mut(feed1)
+            .unwrap()
+            .extend(
+                gen_items_with_extension(&[feed1], 1, 3, &create_iwt_extension_map(&[social::Network::Twitter, social::Network::Mastodon], None, &Vec::new()))
+                    .get(feed1).unwrap().iter().cloned()
+            );
+        items.extend(
+                gen_items_with_extension(&[feed2], 1, 0, &create_iwt_extension_map(&[social::Network::Mastodon], None, &Vec::new()))
+            );
+        items.get_mut(feed2)
+            .unwrap()
+            .extend(
+                gen_items_with_extension(&[feed2], 2, 1, &create_iwt_extension_map(&[social::Network::Twitter], None, &Vec::new()))
