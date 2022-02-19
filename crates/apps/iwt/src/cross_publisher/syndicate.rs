@@ -405,3 +405,32 @@ mod test {
                     .unwrap()
                     .target_networks
                     .iter()
+                    .any(|tn| tn.network == social::Network::Mastodon)
+            })
+            .collect::<Vec<_>>();
+        assert_eq!(
+            *calls1, expected_target1,
+            "\niTarget1 Expected:\n{:#?}\n,Got:\n{:#?}\n",
+            expected_target1, calls1
+        );
+
+        let expected_target2 = merged_items(&items, &[feed1, feed2])
+            .into_iter()
+            .filter(|item| {
+                item.get_iwt_extension()
+                    .unwrap()
+                    .target_networks
+                    .iter()
+                    .any(|tn| tn.network == social::Network::Twitter)
+            })
+            .collect::<Vec<_>>();
+        assert_eq!(
+            *calls2, expected_target2,
+            "\nTarget2 Expected:\n{:#?}\n,Got:\n{:#?}\n",
+            expected_target2, calls2
+        );
+    }
+
+    #[tokio::test]
+    async fn test_syndycate_does_not_publish_when_dry_run_is_true() {
+        let feed1 = "http://example.com/rss.xml";
