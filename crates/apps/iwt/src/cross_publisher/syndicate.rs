@@ -373,3 +373,35 @@ mod test {
     #[tokio::test]
     async fn test_syndycate_publishes_from_multiple_feeds_only_to_selected_targets() {
         let feed1 = "http://example.com/rss.xml";
+        let feed2 = "https://blog.example.com/rss.xml";
+        let config = config(vec![feed1.to_string(), feed2.to_string()]);
+
+        let items = gen_target_combinations(feed1, feed2);
+        let client = StubRssClient::new(&items);
+        let stub_target1 = StubTarget::new(Network::Mastodon);
+        let target_calls1 = Arc::clone(&stub_target1.calls);
+        let stub_target2 = StubTarget::new(Network::Twitter);
+        let target_calls2 = Arc::clone(&stub_target2.calls);
+
+        let targets = vec![stub_target1.into(), stub_target2.into()];
+
+        syndicate(
+            &config,
+            &client,
+            &targets,
+            &SyndicatedPostStorageStub::default(),
+            false,
+        )
+        .await
+        .expect("Should be Ok()");
+
+        let calls1 = (*target_calls1).lock().await;
+        let calls2 = (*target_calls2).lock().await;
+
+        let expected_target1 = merged_items(&items, &[feed1, feed2])
+            .into_iter()
+            .filter(|item| {
+                item.get_iwt_extension()
+                    .unwrap()
+                    .target_networks
+                    .iter()
