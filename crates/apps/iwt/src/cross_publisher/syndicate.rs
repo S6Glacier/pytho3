@@ -347,3 +347,29 @@ mod test {
             .unwrap()
             .extend(
                 gen_items_with_extension(&[feed2], 2, 1, &create_iwt_extension_map(&[social::Network::Twitter], None, &Vec::new()))
+                    .get(feed2).unwrap().iter().cloned()
+            );
+        items.get_mut(feed2)
+            .unwrap()
+            .extend(
+                gen_items_with_extension(&[feed2], 2, 3, &create_iwt_extension_map(&[social::Network::Twitter, social::Network::Mastodon], None, &Vec::new()))
+                    .get(feed2).unwrap().iter().cloned()
+            );
+        // items.extend(gen_items_with_extension(&[feed1], 1, 4, create_iwt_extension_map(&[social::Network::Twitter, social::Network::Mastodon])));
+        // items.extend(gen_items_with_extension(&[feed2], 1, 0, create_iwt_extension_map(&[social::Network::Mastodon])));
+        // items.extend(gen_items_with_extension(&[feed2], 2, 2, create_iwt_extension_map(&[social::Network::Twitter])));
+        // items.extend(gen_items_with_extension(&[feed2], 2, 4, create_iwt_extension_map(&[social::Network::Twitter, social::Network::Mastodon])));
+        items
+    }
+
+    fn merged_items(items_hash: &HashMap<String, Vec<Item>>, keys: &[&str]) -> Vec<Item> {
+        let mut items = Vec::new();
+        for key in keys {
+            items.extend(items_hash.get(&(*key).to_string()).unwrap().clone());
+        }
+        items
+    }
+
+    #[tokio::test]
+    async fn test_syndycate_publishes_from_multiple_feeds_only_to_selected_targets() {
+        let feed1 = "http://example.com/rss.xml";
