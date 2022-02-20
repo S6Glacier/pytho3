@@ -461,3 +461,30 @@ mod test {
         assert!(calls1.is_empty());
         assert!(calls2.is_empty());
     }
+
+    #[tokio::test]
+    async fn test_syndycate_publishes_when_single_feed_fails() {
+        let feed1 = "http://example.com/rss.xml?failure=1";
+        let feed2 = "https://blog.example.com/rss.xml";
+        let config = config(vec![feed1.to_string(), feed2.to_string()]);
+
+        let feed2_items = gen_items(&[feed2]).get(feed2).unwrap().clone();
+        let mut items = gen_items(&[feed1]);
+        items.insert(feed2.to_string(), feed2_items.clone());
+
+        let client = StubRssClient::new(&items);
+        let stub_target1 = StubTarget::new(Network::Mastodon);
+        let target_calls1 = Arc::clone(&stub_target1.calls);
+        let stub_target2 = StubTarget::new(Network::Twitter);
+        let target_calls2 = Arc::clone(&stub_target2.calls);
+
+        let targets = vec![stub_target1.into(), stub_target2.into()];
+
+        let result = syndicate(
+            &config,
+            &client,
+            &targets,
+            &SyndicatedPostStorageStub::default(),
+            false,
+        )
+        .await;
