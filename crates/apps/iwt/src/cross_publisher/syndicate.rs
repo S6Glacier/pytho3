@@ -546,3 +546,36 @@ mod test {
             .expect("Should be Ok()");
 
         let mut expected = merged_items(&items, &[feed1, feed2])
+            .iter()
+            .enumerate()
+            .map(|(i, item)| SyndicatedPost {
+                social_network: Network::Mastodon,
+                id: i.to_string(),
+                original_guid: String::from(item.guid().unwrap().value()),
+                original_uri: String::from(item.link().unwrap()),
+            })
+            .collect::<Vec<_>>();
+
+        expected.extend(
+            merged_items(&items, &[feed1, feed2])
+                .iter()
+                .enumerate()
+                .map(|(i, item)| SyndicatedPost {
+                    social_network: Network::Twitter,
+                    id: i.to_string(),
+                    original_guid: String::from(item.guid().unwrap().value()),
+                    original_uri: String::from(item.link().unwrap()),
+                })
+                .collect::<Vec<_>>(),
+        );
+
+        let mut posts = storage.posts.lock().unwrap();
+        // Sort vecs as the order doesn't matter
+        // TODO: maybe use HashSet?
+        expected.sort_by_key(|i| {
+            (
+                i.social_network.clone(),
+                i.id.clone(),
+                i.original_uri.clone(),
+            )
+        });
