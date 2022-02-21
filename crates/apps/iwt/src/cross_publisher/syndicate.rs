@@ -579,3 +579,15 @@ mod test {
                 i.original_uri.clone(),
             )
         });
+        posts.sort_by_key(|i| {
+            (
+                i.social_network.clone(),
+                i.id.clone(),
+                i.original_uri.clone(),
+            )
+        });
+
+        assert_eq!(posts.len(), expected.len());
+        assert_eq!(*posts, expected);
+    }
+}
