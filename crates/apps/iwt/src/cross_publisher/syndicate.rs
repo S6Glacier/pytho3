@@ -516,3 +516,33 @@ mod test {
             &config,
             &client,
             &targets,
+            &SyndicatedPostStorageStub::default(),
+            false,
+        )
+        .await;
+
+        assert!(result.is_err());
+
+        let calls2 = (*target_calls2).lock().await;
+        assert_eq!(*calls2, merged_items(&items, &[feed1, feed2]));
+    }
+
+    #[tokio::test]
+    async fn test_syndycate_should_store_the_syndicated_posts() {
+        let feed1 = "http://example.com/rss.xml";
+        let feed2 = "https://blog.example.com/rss.xml";
+        let config = config(vec![feed1.to_string(), feed2.to_string()]);
+
+        let items = gen_items(&[feed1, feed2]);
+        let client = StubRssClient::new(&items);
+        let stub_target1 = StubTarget::new(Network::Mastodon);
+        let stub_target2 = StubTarget::new(Network::Twitter);
+
+        let targets = vec![stub_target1.into(), stub_target2.into()];
+        let storage = SyndicatedPostStorageStub::default();
+
+        syndicate(&config, &client, &targets, &storage, false)
+            .await
+            .expect("Should be Ok()");
+
+        let mut expected = merged_items(&items, &[feed1, feed2])
