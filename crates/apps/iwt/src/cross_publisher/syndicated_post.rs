@@ -3,4 +3,6 @@ use std::rc::Rc;
 use rss::Item;
 use rusqlite::Connection;
 
-use crate::
+use crate::social::Network;
+
+#[derive(Debug,
