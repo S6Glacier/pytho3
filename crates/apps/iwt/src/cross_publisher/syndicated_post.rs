@@ -5,4 +5,4 @@ use rusqlite::Connection;
 
 use crate::social::Network;
 
-#[derive(Debug,
+#[derive(Debug, PartialEq, Clone)] // TODO: Clone 
