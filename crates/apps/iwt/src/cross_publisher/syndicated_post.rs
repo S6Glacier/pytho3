@@ -9,4 +9,5 @@ use crate::social::Network;
 pub struct SyndicatedPost {
     pub social_network: Network,
     pub id: String,
-    pub original_guid: S
+    pub original_guid: String,
+    pub original_uri: Strin
