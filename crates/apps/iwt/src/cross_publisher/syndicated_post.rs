@@ -7,4 +7,5 @@ use crate::social::Network;
 
 #[derive(Debug, PartialEq, Clone)] // TODO: Clone is only needed for the tests
 pub struct SyndicatedPost {
-    pub so
+    pub social_network: Network,
+    pu
