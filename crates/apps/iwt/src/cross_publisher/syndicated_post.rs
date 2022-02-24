@@ -14,4 +14,4 @@ pub struct SyndicatedPost {
 }
 
 impl SyndicatedPost {
-    pub f
+    pub fn new(social_network: 
