@@ -18,4 +18,4 @@ impl SyndicatedPost {
         Self {
             social_network,
             id: String::from(id),
-       
+            original_guid: Strin
