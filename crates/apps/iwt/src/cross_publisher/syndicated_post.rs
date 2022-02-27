@@ -18,4 +18,5 @@ impl SyndicatedPost {
         Self {
             social_network,
             id: String::from(id),
-            original_guid: String::from(item.guid().unwrap().v
+            original_guid: String::from(item.guid().unwrap().value()),
+            original
