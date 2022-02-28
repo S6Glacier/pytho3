@@ -24,4 +24,5 @@ impl SyndicatedPost {
     }
 }
 
-#[deriv
+#[derive(Debug)]
+pub enum StorageErro
