@@ -19,4 +19,9 @@ impl SyndicatedPost {
             social_network,
             id: String::from(id),
             original_guid: String::from(item.guid().unwrap().value()),
-            original_uri: String::from(item.link().unwrap(
+            original_uri: String::from(item.link().unwrap()),
+        }
+    }
+}
+
+#[deriv
