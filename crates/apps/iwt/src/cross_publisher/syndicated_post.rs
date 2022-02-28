@@ -25,4 +25,6 @@ impl SyndicatedPost {
 }
 
 #[derive(Debug)]
-pub enum StorageErro
+pub enum StorageError {
+    PersistenceError(String),
+   
