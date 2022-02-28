@@ -27,4 +27,4 @@ impl SyndicatedPost {
 #[derive(Debug)]
 pub enum StorageError {
     PersistenceError(String),
-   
+    SqlError(rusqlite::E
