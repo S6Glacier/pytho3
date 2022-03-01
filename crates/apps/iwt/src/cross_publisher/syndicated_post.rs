@@ -31,4 +31,4 @@ pub enum StorageError {
 }
 
 impl std::fmt::Display for StorageError {
-    fn 
+    fn fmt(&self, f: &mut std::fmt::Fo
