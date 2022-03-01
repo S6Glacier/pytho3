@@ -30,4 +30,5 @@ pub enum StorageError {
     SqlError(rusqlite::Error),
 }
 
-impl std::fmt::Display
+impl std::fmt::Display for StorageError {
+    fn 
