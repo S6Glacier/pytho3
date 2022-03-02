@@ -32,4 +32,8 @@ pub enum StorageError {
 
 impl std::fmt::Display for StorageError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "Stora
+        write!(f, "StorageError")
+    }
+}
+
+impl From<rusqlit
