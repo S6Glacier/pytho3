@@ -36,4 +36,5 @@ impl std::fmt::Display for StorageError {
     }
 }
 
-impl From<rusqlit
+impl From<rusqlite::Error> for StorageError {
+   
