@@ -42,4 +42,6 @@ impl From<rusqlite::Error> for StorageError {
     }
 }
 
-impl std::erro
+impl std::error::Error for StorageError {}
+
+pub t
