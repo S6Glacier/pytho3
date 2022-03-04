@@ -38,4 +38,8 @@ impl std::fmt::Display for StorageError {
 
 impl From<rusqlite::Error> for StorageError {
     fn from(e: rusqlite::Error) -> Self {
-        StorageError::S
+        StorageError::SqlError(e)
+    }
+}
+
+impl std::erro
