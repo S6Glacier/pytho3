@@ -44,4 +44,5 @@ impl From<rusqlite::Error> for StorageError {
 
 impl std::error::Error for StorageError {}
 
-pub t
+pub trait Storage {
+    fn store
