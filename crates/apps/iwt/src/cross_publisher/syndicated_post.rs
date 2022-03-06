@@ -45,4 +45,5 @@ impl From<rusqlite::Error> for StorageError {
 impl std::error::Error for StorageError {}
 
 pub trait Storage {
-    fn store(&self, syndicated_post: SyndicatedPo
+    fn store(&self, syndicated_post: SyndicatedPost) -> Result<(), StorageError>;
+ 
