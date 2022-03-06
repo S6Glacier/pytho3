@@ -46,4 +46,6 @@ impl std::error::Error for StorageError {}
 
 pub trait Storage {
     fn store(&self, syndicated_post: SyndicatedPost) -> Result<(), StorageError>;
- 
+    fn find(
+        &self,
+        orig
