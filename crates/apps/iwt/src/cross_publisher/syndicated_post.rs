@@ -49,4 +49,5 @@ pub trait Storage {
     fn find(
         &self,
         original_guid: &str,
-        social
+        social_network: &Network,
+    ) -> R
