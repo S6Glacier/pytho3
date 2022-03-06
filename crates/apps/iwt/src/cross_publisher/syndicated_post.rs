@@ -48,4 +48,5 @@ pub trait Storage {
     fn store(&self, syndicated_post: SyndicatedPost) -> Result<(), StorageError>;
     fn find(
         &self,
-        orig
+        original_guid: &str,
+        social
