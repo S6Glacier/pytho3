@@ -50,4 +50,4 @@ pub trait Storage {
         &self,
         original_guid: &str,
         social_network: &Network,
-    ) -> R
+    ) -> Result<Option<SyndicatedPost>, St
