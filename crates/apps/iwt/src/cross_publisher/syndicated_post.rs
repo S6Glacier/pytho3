@@ -50,4 +50,7 @@ pub trait Storage {
         &self,
         original_guid: &str,
         social_network: &Network,
-    ) -> Result<Option<SyndicatedPost>, St
+    ) -> Result<Option<SyndicatedPost>, StorageError>;
+}
+
+pub struct Sq
