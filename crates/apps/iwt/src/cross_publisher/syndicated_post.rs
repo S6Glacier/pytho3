@@ -53,4 +53,5 @@ pub trait Storage {
     ) -> Result<Option<SyndicatedPost>, StorageError>;
 }
 
-pub struct Sq
+pub struct SqliteSyndycatedPostStorage {
+  
