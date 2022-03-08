@@ -54,4 +54,5 @@ pub trait Storage {
 }
 
 pub struct SqliteSyndycatedPostStorage {
-  
+    conn: Rc<Connection>,
+}
