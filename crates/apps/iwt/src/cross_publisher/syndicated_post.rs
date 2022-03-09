@@ -57,4 +57,5 @@ pub struct SqliteSyndycatedPostStorage {
     conn: Rc<Connection>,
 }
 
-impl SqliteSyndycatedPostStorag
+impl SqliteSyndycatedPostStorage {
+    pub fn new(conn: Rc<Connecti
