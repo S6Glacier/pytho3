@@ -59,4 +59,7 @@ pub struct SqliteSyndycatedPostStorage {
 
 impl SqliteSyndycatedPostStorage {
     pub fn new(conn: Rc<Connection>) -> Self {
-        Self { conn 
+        Self { conn }
+    }
+
+    pub fn init_table(&self)
