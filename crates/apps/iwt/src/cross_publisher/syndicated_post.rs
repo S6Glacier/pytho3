@@ -63,4 +63,5 @@ impl SqliteSyndycatedPostStorage {
     }
 
     pub fn init_table(&self) -> Result<(), StorageError> {
+        self.conn
    
