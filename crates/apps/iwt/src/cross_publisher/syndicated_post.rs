@@ -66,4 +66,5 @@ impl SqliteSyndycatedPostStorage {
         self.conn
             .execute(
                 "CREATE TABLE IF NOT EXISTS post (
-              id VAR
+              id VARCHAR(64) NOT NULL,
+              social_
