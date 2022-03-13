@@ -69,4 +69,6 @@ impl SqliteSyndycatedPostStorage {
               id VARCHAR(64) NOT NULL,
               social_network VARCHAR(20) NOT NULL,
               original_guid TEXT NOT NULL,
-              original_uri
+              original_uri TEXT NOT NULL,
+            
+          
