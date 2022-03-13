@@ -68,4 +68,5 @@ impl SqliteSyndycatedPostStorage {
                 "CREATE TABLE IF NOT EXISTS post (
               id VARCHAR(64) NOT NULL,
               social_network VARCHAR(20) NOT NULL,
-              original_guid TEXT N
+              original_guid TEXT NOT NULL,
+              original_uri
