@@ -72,4 +72,5 @@ impl SqliteSyndycatedPostStorage {
               original_uri TEXT NOT NULL,
             
               PRIMARY KEY (id, social_network)
- 
+            )",
+            
