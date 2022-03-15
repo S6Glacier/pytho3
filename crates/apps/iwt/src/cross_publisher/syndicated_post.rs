@@ -73,4 +73,5 @@ impl SqliteSyndycatedPostStorage {
             
               PRIMARY KEY (id, social_network)
             )",
+                (),
             
