@@ -74,4 +74,6 @@ impl SqliteSyndycatedPostStorage {
               PRIMARY KEY (id, social_network)
             )",
                 (),
-            
+            )
+            .map(|_| ())
+   
