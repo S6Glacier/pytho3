@@ -76,4 +76,4 @@ impl SqliteSyndycatedPostStorage {
                 (),
             )
             .map(|_| ())
-   
+            .map_err(|err| StorageEr
