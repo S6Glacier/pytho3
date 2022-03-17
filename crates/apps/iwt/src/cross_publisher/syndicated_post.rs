@@ -80,4 +80,4 @@ impl SqliteSyndycatedPostStorage {
     }
 }
 
-impl Storage 
+impl Storage for SqliteSyndycatedP
