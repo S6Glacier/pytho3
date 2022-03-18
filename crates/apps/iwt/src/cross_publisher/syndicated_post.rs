@@ -81,4 +81,4 @@ impl SqliteSyndycatedPostStorage {
 }
 
 impl Storage for SqliteSyndycatedPostStorage {
-    fn st
+    fn store(&self, syndicated_post: Syndicat
