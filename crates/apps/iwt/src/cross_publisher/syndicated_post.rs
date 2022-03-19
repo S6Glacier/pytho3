@@ -84,4 +84,5 @@ impl Storage for SqliteSyndycatedPostStorage {
     fn store(&self, syndicated_post: SyndicatedPost) -> Result<(), StorageError> {
         self.conn
             .execute(
-                "INSERT INTO post (id, social_network, original_guid, original_uri
+                "INSERT INTO post (id, social_network, original_guid, original_uri) 
+                 VALUES (:id,
