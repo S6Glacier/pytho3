@@ -86,4 +86,5 @@ impl Storage for SqliteSyndycatedPostStorage {
             .execute(
                 "INSERT INTO post (id, social_network, original_guid, original_uri) 
                  VALUES (:id, :social_network, :original_guid, :original_url)",
-         
+                &[
+                    ("
