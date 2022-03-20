@@ -85,4 +85,5 @@ impl Storage for SqliteSyndycatedPostStorage {
         self.conn
             .execute(
                 "INSERT INTO post (id, social_network, original_guid, original_uri) 
-                 VALUES (:id, :social_network, :original_gu
+                 VALUES (:id, :social_network, :original_guid, :original_url)",
+         
