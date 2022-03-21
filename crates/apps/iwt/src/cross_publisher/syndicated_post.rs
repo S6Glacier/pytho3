@@ -88,4 +88,5 @@ impl Storage for SqliteSyndycatedPostStorage {
                  VALUES (:id, :social_network, :original_guid, :original_url)",
                 &[
                     (":id", &syndicated_post.id),
- 
+                    (
+                        ":s
