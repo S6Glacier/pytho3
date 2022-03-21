@@ -87,4 +87,5 @@ impl Storage for SqliteSyndycatedPostStorage {
                 "INSERT INTO post (id, social_network, original_guid, original_uri) 
                  VALUES (:id, :social_network, :original_guid, :original_url)",
                 &[
-                    ("
+                    (":id", &syndicated_post.id),
+ 
