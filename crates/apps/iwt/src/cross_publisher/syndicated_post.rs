@@ -92,4 +92,4 @@ impl Storage for SqliteSyndycatedPostStorage {
                         ":social_network",
                         &syndicated_post.social_network.to_string(),
                     ),
-                   
+                    (":original_guid", &syndicate
