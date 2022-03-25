@@ -96,4 +96,5 @@ impl Storage for SqliteSyndycatedPostStorage {
                     (":original_url", &syndicated_post.original_uri),
                 ],
             )
-            .map(
+            .map(|_| ())
+            .map_err(|err
