@@ -97,4 +97,4 @@ impl Storage for SqliteSyndycatedPostStorage {
                 ],
             )
             .map(|_| ())
-            .map_err(|err
+            .map_err(|err| StorageError::PersistenceError
