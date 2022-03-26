@@ -100,4 +100,6 @@ impl Storage for SqliteSyndycatedPostStorage {
             .map_err(|err| StorageError::PersistenceError(format!("{err:?}")))
     }
 
-   
+    fn find(
+        &self,
+        
