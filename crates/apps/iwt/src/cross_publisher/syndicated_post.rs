@@ -103,4 +103,5 @@ impl Storage for SqliteSyndycatedPostStorage {
     fn find(
         &self,
         original_guid: &str,
-        social_
+        social_network: &Network,
+    ) -> 
