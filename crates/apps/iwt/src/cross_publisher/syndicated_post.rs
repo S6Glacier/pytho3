@@ -104,4 +104,5 @@ impl Storage for SqliteSyndycatedPostStorage {
         &self,
         original_guid: &str,
         social_network: &Network,
-    ) -> Result<Option<SyndicatedPost>, Storag
+    ) -> Result<Option<SyndicatedPost>, StorageError> {
+        let mut stateme
