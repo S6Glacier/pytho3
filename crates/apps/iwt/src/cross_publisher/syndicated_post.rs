@@ -104,4 +104,4 @@ impl Storage for SqliteSyndycatedPostStorage {
         &self,
         original_guid: &str,
         social_network: &Network,
-    ) -> 
+    ) -> Result<Option<SyndicatedPost>, Storag
