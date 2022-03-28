@@ -106,4 +106,4 @@ impl Storage for SqliteSyndycatedPostStorage {
         social_network: &Network,
     ) -> Result<Option<SyndicatedPost>, StorageError> {
         let mut statement = self.conn.prepare(
-   
+            "SELECT id, socia
