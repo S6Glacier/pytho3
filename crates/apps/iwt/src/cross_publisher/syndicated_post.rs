@@ -107,4 +107,4 @@ impl Storage for SqliteSyndycatedPostStorage {
     ) -> Result<Option<SyndicatedPost>, StorageError> {
         let mut statement = self.conn.prepare(
             "SELECT id, social_network, original_guid, original_uri FROM post
-            WHERE original_guid = :original
+            WHERE original_guid = :original_guid AND social_network = :so
