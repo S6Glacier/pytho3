@@ -110,3 +110,5 @@ impl Storage for SqliteSyndycatedPostStorage {
             WHERE original_guid = :original_guid AND social_network = :social_network",
         )?;
 
+        statement
+            .quer
