@@ -111,4 +111,6 @@ impl Storage for SqliteSyndycatedPostStorage {
         )?;
 
         statement
-            .quer
+            .query_map(
+                &[
+                 
