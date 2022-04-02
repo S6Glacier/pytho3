@@ -114,4 +114,4 @@ impl Storage for SqliteSyndycatedPostStorage {
             .query_map(
                 &[
                     (":original_guid", original_guid),
-                   
+                    (":social_network", social_
