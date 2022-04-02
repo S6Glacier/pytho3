@@ -113,4 +113,5 @@ impl Storage for SqliteSyndycatedPostStorage {
         statement
             .query_map(
                 &[
-                    (":original_guid", original_gu
+                    (":original_guid", original_guid),
+                   
