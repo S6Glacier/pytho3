@@ -115,4 +115,5 @@ impl Storage for SqliteSyndycatedPostStorage {
                 &[
                     (":original_guid", original_guid),
                     (":social_network", social_network.to_string().as_str()),
-      
+                ],
+                
