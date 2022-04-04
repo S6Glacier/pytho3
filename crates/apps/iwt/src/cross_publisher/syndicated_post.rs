@@ -119,4 +119,4 @@ impl Storage for SqliteSyndycatedPostStorage {
                 |row| {
                     Ok(SyndicatedPost {
                         id: row.get(0).unwrap(),
-                        soci
+                        social_network: row.get(1).unwrap(),
