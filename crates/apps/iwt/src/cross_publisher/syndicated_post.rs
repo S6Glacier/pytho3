@@ -117,4 +117,5 @@ impl Storage for SqliteSyndycatedPostStorage {
                     (":social_network", social_network.to_string().as_str()),
                 ],
                 |row| {
-                    Ok
+                    Ok(SyndicatedPost {
+            
