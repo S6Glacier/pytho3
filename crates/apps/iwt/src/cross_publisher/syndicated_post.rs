@@ -123,4 +123,6 @@ impl Storage for SqliteSyndycatedPostStorage {
                         original_guid: row.get(2).unwrap(),
                         original_uri: row.get(3).unwrap(),
                     })
-             
+                },
+            )
+          
