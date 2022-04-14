@@ -122,4 +122,5 @@ impl Storage for SqliteSyndycatedPostStorage {
                         social_network: row.get(1).unwrap(),
                         original_guid: row.get(2).unwrap(),
                         original_uri: row.get(3).unwrap(),
-       
+                    })
+             
