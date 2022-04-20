@@ -125,4 +125,5 @@ impl Storage for SqliteSyndycatedPostStorage {
                     })
                 },
             )
-          
+            .map(|iter| {
+                /
