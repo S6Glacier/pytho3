@@ -130,4 +130,5 @@ impl Storage for SqliteSyndycatedPostStorage {
                 iter.map(Result::unwrap)
                     .collect::<Vec<_>>()
                     .first()
-                    .map(
+                    .map(|r| (*r).clone())
+            })
