@@ -132,4 +132,5 @@ impl Storage for SqliteSyndycatedPostStorage {
                     .first()
                     .map(|r| (*r).clone())
             })
-            .map_err(|_| StorageError::PersistenceError(String::from("foo"))) //
+            .map_err(|_| StorageError::PersistenceError(String::from("foo"))) // TODO: this needs some clean up
+    }
