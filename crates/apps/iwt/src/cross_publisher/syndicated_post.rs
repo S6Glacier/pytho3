@@ -134,3 +134,7 @@ impl Storage for SqliteSyndycatedPostStorage {
             })
             .map_err(|_| StorageError::PersistenceError(String::from("foo"))) // TODO: this needs some clean up
     }
+}
+
+#[cfg(test)]
+pub mod stubs {
