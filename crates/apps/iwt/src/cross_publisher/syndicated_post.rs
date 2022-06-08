@@ -138,3 +138,6 @@ impl Storage for SqliteSyndycatedPostStorage {
 
 #[cfg(test)]
 pub mod stubs {
+    use std::sync::Mutex;
+
+    us
