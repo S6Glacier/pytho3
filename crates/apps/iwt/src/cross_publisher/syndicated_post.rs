@@ -140,4 +140,6 @@ impl Storage for SqliteSyndycatedPostStorage {
 pub mod stubs {
     use std::sync::Mutex;
 
-    us
+    use crate::social::Network;
+
+    u
