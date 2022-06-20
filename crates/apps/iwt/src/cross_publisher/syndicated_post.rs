@@ -142,4 +142,4 @@ pub mod stubs {
 
     use crate::social::Network;
 
-    u
+    use super::{Storage, Syndic
