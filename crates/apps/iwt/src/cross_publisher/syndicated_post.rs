@@ -142,4 +142,6 @@ pub mod stubs {
 
     use crate::social::Network;
 
-    use super::{Storage, Syndic
+    use super::{Storage, SyndicatedPost};
+
+    #[derive(Default)]
