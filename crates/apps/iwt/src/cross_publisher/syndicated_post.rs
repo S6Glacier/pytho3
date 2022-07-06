@@ -145,3 +145,4 @@ pub mod stubs {
     use super::{Storage, SyndicatedPost};
 
     #[derive(Default)]
+    pub struct SyndicatedP
