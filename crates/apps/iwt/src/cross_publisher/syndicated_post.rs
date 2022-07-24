@@ -147,4 +147,6 @@ pub mod stubs {
     #[derive(Default)]
     pub struct SyndicatedPostStorageStub {
         pub posts: Mutex<Vec<SyndicatedPost>>,
-   
+    }
+
+    impl Storage for SyndicatedPostS
