@@ -149,4 +149,5 @@ pub mod stubs {
         pub posts: Mutex<Vec<SyndicatedPost>>,
     }
 
-    impl Storage for SyndicatedPostS
+    impl Storage for SyndicatedPostStorageStub {
+        fn store(&sel
