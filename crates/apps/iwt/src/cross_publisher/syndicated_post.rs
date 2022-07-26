@@ -150,4 +150,4 @@ pub mod stubs {
     }
 
     impl Storage for SyndicatedPostStorageStub {
-        fn store(&sel
+        fn store(&self, syndicated_post: SyndicatedPos
