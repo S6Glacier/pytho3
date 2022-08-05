@@ -150,4 +150,4 @@ pub mod stubs {
     }
 
     impl Storage for SyndicatedPostStorageStub {
-        fn store(&self, syndicated_post: SyndicatedPos
+        fn store(&self, syndicated_post: SyndicatedPost) -> Result<(), super::StorageError>
