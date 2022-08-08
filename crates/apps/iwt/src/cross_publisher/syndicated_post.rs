@@ -151,4 +151,5 @@ pub mod stubs {
 
     impl Storage for SyndicatedPostStorageStub {
         fn store(&self, syndicated_post: SyndicatedPost) -> Result<(), super::StorageError> {
-            let mut posts 
+            let mut posts = self.posts.lock().unwrap();
+   
