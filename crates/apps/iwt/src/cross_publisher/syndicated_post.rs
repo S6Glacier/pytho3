@@ -158,4 +158,5 @@ pub mod stubs {
         }
 
         fn find(
-       
+            &self,
+            original_gu
