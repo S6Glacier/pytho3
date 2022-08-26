@@ -155,4 +155,7 @@ pub mod stubs {
             posts.push(syndicated_post);
 
             Ok(())
-  
+        }
+
+        fn find(
+       
