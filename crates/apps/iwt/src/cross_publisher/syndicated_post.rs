@@ -159,4 +159,5 @@ pub mod stubs {
 
         fn find(
             &self,
-            original_gu
+            original_guid: &str,
+            social_network: &
