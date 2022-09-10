@@ -160,4 +160,5 @@ pub mod stubs {
         fn find(
             &self,
             original_guid: &str,
-            social_network: &
+            social_network: &Network,
+        ) -> Result<O
