@@ -161,4 +161,5 @@ pub mod stubs {
             &self,
             original_guid: &str,
             social_network: &Network,
-        ) -> Result<Option<SyndicatedPost>, super::S
+        ) -> Result<Option<SyndicatedPost>, super::StorageError> {
+            let po
