@@ -161,4 +161,4 @@ pub mod stubs {
             &self,
             original_guid: &str,
             social_network: &Network,
-        ) -> Result<O
+        ) -> Result<Option<SyndicatedPost>, super::S
