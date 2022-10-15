@@ -165,4 +165,5 @@ pub mod stubs {
             let posts = self.posts.lock().unwrap();
 
             Ok(posts
-                .iter(
+                .iter()
+                .find(|p| p.original_guid 
