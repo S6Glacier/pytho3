@@ -162,4 +162,6 @@ pub mod stubs {
             original_guid: &str,
             social_network: &Network,
         ) -> Result<Option<SyndicatedPost>, super::StorageError> {
-            let posts = self.posts.lock().unwrap
+            let posts = self.posts.lock().unwrap();
+
+            Ok(posts
