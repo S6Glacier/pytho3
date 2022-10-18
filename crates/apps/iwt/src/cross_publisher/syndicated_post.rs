@@ -166,4 +166,4 @@ pub mod stubs {
 
             Ok(posts
                 .iter()
-                .find(|p| p.original_guid 
+                .find(|p| p.original_guid == *original_guid && p.social_ne
