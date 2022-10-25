@@ -167,4 +167,4 @@ pub mod stubs {
             Ok(posts
                 .iter()
                 .find(|p| p.original_guid == *original_guid && p.social_network == *social_network)
-     
+                .map(|p| (*p).clone()
