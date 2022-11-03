@@ -50,3 +50,34 @@ pub mod stubs {
             &self,
             post: &Item,
             _extension: &IwtRssExtension,
+        ) -> Result<SyndicatedPost, Box<dyn std::error::Error + 'a>> {
+            let mut calls = self.calls.lock().await;
+            let id = calls.len();
+            calls.push(post.clone());
+            Ok(SyndicatedPost::new(
+                self.social_network.clone(),
+                &id.to_string(),
+                post,
+            ))
+        }
+
+        fn network(&self) -> Network {
+            self.social_network.clone()
+        }
+    }
+
+    impl From<StubTarget> for Box<dyn Target> {
+        fn from(stub_target: StubTarget) -> Self {
+            Box::new(stub_target)
+        }
+    }
+
+    #[derive(Debug)]
+    pub struct TargetError;
+    impl Display for TargetError {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            write!(f, "RssClientError")
+        }
+    }
+
+    impl std::error::Error for TargetError {}
