@@ -81,3 +81,28 @@ pub mod stubs {
     }
 
     impl std::error::Error for TargetError {}
+
+    #[derive(Default)]
+    pub struct FailingStubTarget;
+
+    #[async_trait(?Send)]
+    impl Target for FailingStubTarget {
+        async fn publish<'a>(
+            &self,
+            _post: &Item,
+            _extension: &IwtRssExtension,
+        ) -> Result<SyndicatedPost, Box<dyn std::error::Error + 'a>> {
+            Err(Box::new(TargetError))
+        }
+
+        fn network(&self) -> Network {
+            Network::Twitter
+        }
+    }
+
+    impl From<FailingStubTarget> for Box<dyn Target> {
+        fn from(stub_target: FailingStubTarget) -> Self {
+            Box::new(stub_target)
+        }
+    }
+}
