@@ -95,3 +95,27 @@ impl<DB: TokenDB, USClient: url_shortener::Client> Twitter<DB, USClient> {
             );
 
             let request = self
+                .http_client
+                .post("https://api.twitter.com/2/tweets")
+                .json(&TweetsRequest { text });
+
+            result =
+                self.authed_client
+                    .authed_request(request.build().unwrap())
+                    .and_then(|response| async {
+                        log::info!("Twitter response: {:?}", &response);
+
+                        let status = response.status();
+
+                        let body = response.text().await.expect("Body should be available");
+
+                        if status.is_success() {
+                            success_or_gave_up = true;
+                            serde_json::from_str::<TweetResponse>(&body)
+                                .map(|response| {
+                                    SyndicatedPost::new(Network::Twitter, &response.data.id, post)
+                                })
+                                .map_err(|err| Box::new(err) as Box<dyn std::error::Error>)
+                        } else {
+                            match serde_json::from_str::<TwitterErrorResponse>(&body) {
+                                Ok(error) => {
