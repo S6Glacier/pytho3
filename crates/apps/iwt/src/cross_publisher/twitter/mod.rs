@@ -62,3 +62,36 @@ struct TweetResponse {
 struct TweetResponseData {
     id: String,
 }
+
+#[derive(serde::Deserialize)]
+struct TwitterErrorResponse {
+    errors: Vec<TwitterError>,
+}
+
+#[derive(serde::Deserialize)]
+struct TwitterError {
+    message: String,
+}
+
+impl<DB: TokenDB, USClient: url_shortener::Client> Twitter<DB, USClient> {
+    async fn try_publish<'a>(
+        &self,
+        post: &Item,
+        permashort_citation: &PermashortCitation,
+        tags: &[String],
+    ) -> Result<SyndicatedPost, Box<dyn std::error::Error + 'a>> {
+        let mut length = 280;
+        let mut success_or_gave_up = false;
+        let mut result = Err(Box::new(IwtError::new(
+            "You shouldn't see this, we're trying to publish now...",
+        )) as Box<dyn std::error::Error>);
+
+        while !success_or_gave_up {
+            let text = text::shorten_with_permashort_citation(
+                post.description().unwrap(),
+                length,
+                permashort_citation,
+                tags,
+            );
+
+            let request = self
