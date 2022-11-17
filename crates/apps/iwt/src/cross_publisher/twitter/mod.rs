@@ -147,3 +147,37 @@ impl<DB: TokenDB, USClient: url_shortener::Client> Twitter<DB, USClient> {
                                 }
                             }
                         }
+
+                        // log::info!("Twitter response body: {}", &body);
+                    })
+                    .await;
+
+            length -= 5;
+        }
+
+        result
+    }
+}
+
+#[async_trait(?Send)]
+impl<DB: TokenDB, WHClient: url_shortener::Client> Target for Twitter<DB, WHClient> {
+    async fn publish<'a>(
+        &self,
+        post: &Item,
+        extension: &IwtRssExtension,
+    ) -> Result<SyndicatedPost, Box<dyn std::error::Error + 'a>> {
+        log::debug!("processing post: {:?}", post);
+
+        let permashort_citation = self
+            .url_shortener_client
+            .put_uri(post.link.as_ref().unwrap())
+            .await?;
+
+        self.try_publish(post, &permashort_citation, &extension.tags)
+            .await
+    }
+
+    fn network(&self) -> Network {
+        Network::Twitter
+    }
+}
