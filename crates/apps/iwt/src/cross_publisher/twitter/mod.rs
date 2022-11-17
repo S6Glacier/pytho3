@@ -119,3 +119,31 @@ impl<DB: TokenDB, USClient: url_shortener::Client> Twitter<DB, USClient> {
                         } else {
                             match serde_json::from_str::<TwitterErrorResponse>(&body) {
                                 Ok(error) => {
+                                    let too_long_error = error.errors.iter().any(|e| {
+                                        e.message.starts_with("Your Tweet text is too long.")
+                                    });
+
+                                    if too_long_error && length > 210 {
+                                        log::info!(
+                                            "Length {} was too long, trying to reduce it...",
+                                            length
+                                        );
+
+                                        Err(Box::new(IwtError::new(
+                                            "You shouldn't see this, we're trying it again",
+                                        ))
+                                            as Box<dyn std::error::Error>)
+                                    } else {
+                                        success_or_gave_up = true;
+                                        Err(Box::new(IwtError::new(
+                                        "Couldn't reliably reduce the length of the post, gave up",
+                                    ))
+                                        as Box<dyn std::error::Error>)
+                                    }
+                                }
+                                Err(err) => {
+                                    success_or_gave_up = true;
+                                    Err(Box::new(err) as Box<dyn std::error::Error>)
+                                }
+                            }
+                        }
