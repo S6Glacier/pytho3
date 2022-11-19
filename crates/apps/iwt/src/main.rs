@@ -4,4 +4,5 @@ use clap::Parser;
 use clap::Subcommand;
 
 use log::LevelFilter::{Debug, Info};
-use 
+use simple_logger::SimpleLogger;
+
