@@ -6,3 +6,5 @@ use clap::Subcommand;
 use log::LevelFilter::{Debug, Info};
 use simple_logger::SimpleLogger;
 
+mod app_auth;
+pub mod co
