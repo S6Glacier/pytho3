@@ -9,4 +9,7 @@ use simple_logger::SimpleLogger;
 mod app_auth;
 pub mod commons;
 pub mod config;
-m
+mod cross_publisher;
+pub mod social;
+
+use
