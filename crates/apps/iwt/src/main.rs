@@ -12,4 +12,7 @@ pub mod config;
 mod cross_publisher;
 pub mod social;
 
-use
+use config::Config;
+
+#[derive(Debug)]
+pu
