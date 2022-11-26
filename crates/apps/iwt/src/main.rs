@@ -15,4 +15,5 @@ pub mod social;
 use config::Config;
 
 #[derive(Debug)]
-pu
+pub struct IwtError {
+    message: St
