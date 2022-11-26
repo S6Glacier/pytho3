@@ -16,4 +16,8 @@ use config::Config;
 
 #[derive(Debug)]
 pub struct IwtError {
-    message: St
+    message: String,
+}
+
+impl IwtError {
+    
