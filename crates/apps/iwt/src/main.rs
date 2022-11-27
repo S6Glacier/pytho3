@@ -21,4 +21,5 @@ pub struct IwtError {
 
 impl IwtError {
     #[must_use]
-    pub fn new(mess
+    pub fn new(message: &str) -> Self {
+        Self {
