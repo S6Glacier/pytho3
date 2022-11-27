@@ -20,4 +20,5 @@ pub struct IwtError {
 }
 
 impl IwtError {
-    
+    #[must_use]
+    pub fn new(mess
