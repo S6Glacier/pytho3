@@ -23,3 +23,4 @@ impl IwtError {
     #[must_use]
     pub fn new(message: &str) -> Self {
         Self {
+            message: message.t
