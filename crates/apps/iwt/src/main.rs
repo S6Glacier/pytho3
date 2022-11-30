@@ -26,3 +26,7 @@ impl IwtError {
             message: message.to_string(),
         }
     }
+}
+
+impl Display for IwtError {
+  
