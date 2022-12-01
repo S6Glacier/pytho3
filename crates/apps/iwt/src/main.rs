@@ -29,4 +29,4 @@ impl IwtError {
 }
 
 impl Display for IwtError {
-    fn fmt(&self, f: &mut std::fmt
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result
