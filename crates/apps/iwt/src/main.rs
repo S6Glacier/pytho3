@@ -32,3 +32,6 @@ impl Display for IwtError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         f.write_fmt(format_args!("IwtError: {}", self.message))
     }
+}
+
+impl std::error::Error for I
