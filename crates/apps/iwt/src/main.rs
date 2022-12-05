@@ -37,4 +37,5 @@ impl Display for IwtError {
 impl std::error::Error for IwtError {}
 
 #[derive(Parser)]
-#[clap(author, version, about, l
+#[clap(author, version, about, long_about = None)]
+#[clap(propagate_
