@@ -38,4 +38,6 @@ impl std::error::Error for IwtError {}
 
 #[derive(Parser)]
 #[clap(author, version, about, long_about = None)]
-#[clap(propagate_
+#[clap(propagate_version = true)]
+struct Cli {
+  
