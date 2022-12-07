@@ -40,4 +40,5 @@ impl std::error::Error for IwtError {}
 #[clap(author, version, about, long_about = None)]
 #[clap(propagate_version = true)]
 struct Cli {
-  
+    #[clap(subcommand)]
+    command:
