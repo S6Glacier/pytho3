@@ -41,4 +41,5 @@ impl std::error::Error for IwtError {}
 #[clap(propagate_version = true)]
 struct Cli {
     #[clap(subcommand)]
-    command:
+    command: Command,
+    /// Print deb
