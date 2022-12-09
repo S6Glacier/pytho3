@@ -42,4 +42,5 @@ impl std::error::Error for IwtError {}
 struct Cli {
     #[clap(subcommand)]
     command: Command,
-    /// Print debug information, including secre
+    /// Print debug information, including secrets!
+    #[clap(short, long, action)
