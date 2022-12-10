@@ -43,4 +43,6 @@ struct Cli {
     #[clap(subcommand)]
     command: Command,
     /// Print debug information, including secrets!
-    #[clap(short, long, action)
+    #[clap(short, long, action)]
+    debug: bool,
+    /// Pat
