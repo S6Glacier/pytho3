@@ -46,4 +46,4 @@ struct Cli {
     #[clap(short, long, action)]
     debug: bool,
     /// Path to the config file
-    #[cl
+    #[clap(long, value_parser, default_value
