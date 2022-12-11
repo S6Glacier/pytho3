@@ -45,4 +45,5 @@ struct Cli {
     /// Print debug information, including secrets!
     #[clap(short, long, action)]
     debug: bool,
-    /// Pat
+    /// Path to the config file
+    #[cl
