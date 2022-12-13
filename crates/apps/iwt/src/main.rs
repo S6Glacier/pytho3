@@ -46,4 +46,4 @@ struct Cli {
     #[clap(short, long, action)]
     debug: bool,
     /// Path to the config file
-    #[clap(long, value_parser, default_value
+    #[clap(long, value_parser, default_value_t = String::from("config
