@@ -49,3 +49,7 @@ struct Cli {
     #[clap(long, value_parser, default_value_t = String::from("config.toml"))]
     config: String,
 }
+
+#[derive(Subcommand)]
+enum Command {
+   
