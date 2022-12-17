@@ -53,4 +53,5 @@ struct Cli {
 #[derive(Subcommand)]
 enum Command {
     /// App Authentication helper
-    
+    AppAuth {
+        #[clap(subcomma
