@@ -59,4 +59,5 @@ enum Command {
     },
     /// Cross publish posts
     CrossPublish {
-       
+        #[clap(long, action)]
+  
