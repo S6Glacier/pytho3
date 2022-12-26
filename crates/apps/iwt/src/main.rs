@@ -57,4 +57,6 @@ enum Command {
         #[clap(subcommand)]
         sub_command: app_auth::AuthSubcommand,
     },
-    /// Cros
+    /// Cross publish posts
+    CrossPublish {
+       
