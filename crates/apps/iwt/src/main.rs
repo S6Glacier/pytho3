@@ -60,4 +60,5 @@ enum Command {
     /// Cross publish posts
     CrossPublish {
         #[clap(long, action)]
-  
+        dry_run: bool,
+    },
