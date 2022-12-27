@@ -62,3 +62,7 @@ enum Command {
         #[clap(long, action)]
         dry_run: bool,
     },
+}
+
+#[tokio::main]
+async fn main() -> Re
