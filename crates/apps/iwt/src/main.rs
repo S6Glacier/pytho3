@@ -65,4 +65,5 @@ enum Command {
 }
 
 #[tokio::main]
-async fn main() -> Result<(), Box<dyn std::error::E
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let cli = Cli::parse()
