@@ -65,4 +65,4 @@ enum Command {
 }
 
 #[tokio::main]
-async fn main() -> Re
+async fn main() -> Result<(), Box<dyn std::error::E
