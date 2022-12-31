@@ -66,4 +66,6 @@ enum Command {
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    let cli = Cli::parse()
+    let cli = Cli::parse();
+
+    let log_level = if cli.debu
