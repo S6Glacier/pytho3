@@ -69,4 +69,4 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let cli = Cli::parse();
 
     let log_level = if cli.debug { Debug } else { Info };
-    Si
+    SimpleLogger::new().with_level(log_lev
