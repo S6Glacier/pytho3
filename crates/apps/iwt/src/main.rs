@@ -71,4 +71,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let log_level = if cli.debug { Debug } else { Info };
     SimpleLogger::new().with_level(log_level).init().unwrap();
 
-    let config = Config::from_file(&cli.
+    let config = Config::from_file(&cli.config)?;
+
+    match cli.comman
