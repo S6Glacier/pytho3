@@ -73,4 +73,5 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let config = Config::from_file(&cli.config)?;
 
-    match cli.comman
+    match cli.command {
+        Command::AppAuth { sub_command 
