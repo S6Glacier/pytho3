@@ -75,4 +75,4 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     match cli.command {
         Command::AppAuth { sub_command } => app_auth::execute(sub_command, &config).await,
-        Command::Cro
+        Command::CrossPublish { dry_run } =>
