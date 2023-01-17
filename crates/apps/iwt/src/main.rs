@@ -80,4 +80,4 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 }
 
 #[cfg(test)]
-pu
+pub mod stubs;
