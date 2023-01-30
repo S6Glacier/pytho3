@@ -38,3 +38,26 @@ pub mod stubs {
         }
 
         fn get_refresh_token(
+            &self,
+            _social_network: &Network,
+        ) -> Result<oauth2::RefreshToken, Box<dyn std::error::Error>> {
+            let guard = self.refresh_token.lock().unwrap();
+            Ok((*guard).clone())
+        }
+
+        fn store(
+            &self,
+            _social_network: &Network,
+            access_token: &AccessToken,
+            refresh_tokem: &RefreshToken,
+        ) -> Result<(), Box<dyn std::error::Error>> {
+            let mut guard = self.access_token.lock().unwrap();
+            *guard = access_token.clone();
+
+            let mut guard = self.refresh_token.lock().unwrap();
+            *guard = refresh_tokem.clone();
+
+            Ok(())
+        }
+    }
+}
