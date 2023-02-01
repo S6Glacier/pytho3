@@ -46,3 +46,28 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         .unwrap();
 
     let state = State { db_conn };
+
+    let sock_addr = SocketAddr::new(IpAddr::V4(Ipv4Addr::LOCALHOST), http_port);
+    let app = Router::new()
+        .route("/u/:url", put(add_url))
+        .route("/u/:url", get(get_short_url))
+        .route("/s/:short", get(redirect))
+        // shate the state with the request handler
+        .layer(Extension(Arc::new(state)));
+
+    axum::Server::bind(&sock_addr)
+        .serve(app.into_make_service())
+        .await
+        .map_err(|e| Box::new(e) as Box<dyn std::error::Error>)
+}
+
+async fn add_url(
+    Path(url): Path<String>,
+    Extension(state): Extension<Arc<State>>,
+) -> impl IntoResponse {
+    state
+        .db_conn
+        .call(move |conn| {
+            if let Some(short) = find_short(&url, conn).unwrap() {
+                (StatusCode::OK, short)
+            } else {
