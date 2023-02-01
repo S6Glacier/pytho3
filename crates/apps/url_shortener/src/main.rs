@@ -71,3 +71,33 @@ async fn add_url(
             if let Some(short) = find_short(&url, conn).unwrap() {
                 (StatusCode::OK, short)
             } else {
+                let short = gen_unique_short(conn);
+
+                persist(&url, &short, conn).unwrap();
+
+                (StatusCode::CREATED, short)
+            }
+        })
+        .await
+}
+
+async fn get_short_url(
+    Path(url): Path<String>,
+    Extension(state): Extension<Arc<State>>,
+) -> Result<String, StatusCode> {
+    state
+        .db_conn
+        .call(move |conn| {
+            if let Some(short) = find_url(&url, conn).unwrap() {
+                Ok(short)
+            } else {
+                Err(StatusCode::NOT_FOUND)
+            }
+        })
+        .await
+}
+
+async fn redirect(Path(short): Path<String>, Extension(state): Extension<Arc<State>>) -> Response {
+    state
+        .db_conn
+        .call(move |conn| {
