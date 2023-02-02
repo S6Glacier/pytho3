@@ -130,3 +130,23 @@ fn gen_short() -> String {
 
 fn find_short(url: &str, conn: &rusqlite::Connection) -> rusqlite::Result<Option<String>> {
     let mut statement = conn.prepare("SELECT short FROM permashortlink WHERE url = :url")?;
+
+    statement
+        .query_row(&[(":url", url)], |row| row.get(0))
+        .optional()
+}
+
+fn find_url(short: &str, conn: &rusqlite::Connection) -> rusqlite::Result<Option<String>> {
+    let mut statement = conn.prepare("SELECT url FROM permashortlink WHERE short = :short")?;
+
+    statement
+        .query_row(&[(":short", short)], |row| row.get(0))
+        .optional()
+}
+
+fn persist(url: &String, short: &String, conn: &rusqlite::Connection) -> rusqlite::Result<usize> {
+    conn.execute(
+        "INSERT INTO permashortlink (url, short) VALUES (?, ?)",
+        [url, short],
+    )
+}
