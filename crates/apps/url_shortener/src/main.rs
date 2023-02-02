@@ -101,3 +101,32 @@ async fn redirect(Path(short): Path<String>, Extension(state): Extension<Arc<Sta
     state
         .db_conn
         .call(move |conn| {
+            if let Some(url) = find_url(&short, conn).unwrap() {
+                Redirect::permanent(url.as_str()).into_response()
+            } else {
+                StatusCode::NOT_FOUND.into_response()
+            }
+        })
+        .await
+}
+
+fn gen_unique_short(conn: &rusqlite::Connection) -> String {
+    let mut short = gen_short();
+
+    while find_url(&short, conn).unwrap().is_some() {
+        short = gen_short();
+    }
+
+    short
+}
+
+fn gen_short() -> String {
+    thread_rng()
+        .sample_iter(&Alphanumeric)
+        .take(4)
+        .map(char::from)
+        .collect()
+}
+
+fn find_short(url: &str, conn: &rusqlite::Connection) -> rusqlite::Result<Option<String>> {
+    let mut statement = conn.prepare("SELECT short FROM permashortlink WHERE url = :url")?;
