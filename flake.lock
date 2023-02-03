@@ -5,3 +5,34 @@
       "inputs": {
         "flake-compat": "flake-compat",
         "flake-utils": [
+          "nru",
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "nru",
+          "nixpkgs"
+        ],
+        "rust-overlay": [
+          "nru",
+          "rust-overlay"
+        ]
+      },
+      "locked": {
+        "lastModified": 1670900067,
+        "narHash": "sha256-VXVa+KBfukhmWizaiGiHRVX/fuk66P8dgSFfkVN4/MY=",
+        "owner": "ipetkov",
+        "repo": "crane",
+        "rev": "59b31b41a589c0a65e4a1f86b0e5eac68081468b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ipetkov",
+        "repo": "crane",
+        "type": "github"
+      }
+    },
+    "flake-compat": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1668681692,
+        "narHash": "sha256-Ht91NGdewz8IQLtWZ9LCeNXMSXHUss+9COoqu6JLmXU=",
