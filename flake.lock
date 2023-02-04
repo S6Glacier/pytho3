@@ -74,3 +74,35 @@
       "original": {
         "id": "nixpkgs",
         "ref": "release-22.11",
+        "type": "indirect"
+      }
+    },
+    "nru": {
+      "inputs": {
+        "crane": "crane",
+        "flake-utils": "flake-utils",
+        "nixpkgs": "nixpkgs",
+        "rust-overlay": "rust-overlay"
+      },
+      "locked": {
+        "lastModified": 1677223359,
+        "narHash": "sha256-HXEupg55MOL9mwESrupAgwYDkSHla5L8W0Wvt7r8yWI=",
+        "owner": "voidcontext",
+        "repo": "nix-rust-utils",
+        "rev": "45722064d13fee8dc66bd6250e42dbd87578b931",
+        "type": "github"
+      },
+      "original": {
+        "owner": "voidcontext",
+        "ref": "v0.4.1",
+        "repo": "nix-rust-utils",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "nru": "nru"
+      }
+    },
+    "rust-overlay": {
+      "inputs": {
