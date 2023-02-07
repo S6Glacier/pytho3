@@ -1,2 +1,2 @@
 {
-  inputs.nru.url = "github:v
+  inputs.nru.url = "github:voidcontext/nix-rust-utils/v0.
