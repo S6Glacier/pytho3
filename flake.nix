@@ -4,4 +4,5 @@
   outputs = { nru, ...}: 
     nru.lib.mkOutputs ({...}: {
       src = ./.;
-      pname = 
+      pname = "indieweb-tools";
+      version = "
