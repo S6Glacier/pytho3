@@ -3,4 +3,5 @@
 
   outputs = { nru, ...}: 
     nru.lib.mkOutputs ({...}: {
-      src
+      src = ./.;
+      pname = 
