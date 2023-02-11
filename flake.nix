@@ -5,4 +5,6 @@
     nru.lib.mkOutputs ({...}: {
       src = ./.;
       pname = "indieweb-tools";
-      version = "
+      version = "0.1.0";
+    });
+}
