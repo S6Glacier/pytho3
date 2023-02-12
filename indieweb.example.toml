@@ -1,2 +1,4 @@
 [rss]
-urls = [ "ht
+urls = [ "http://example.com/rss.xml" ]
+
+[
