@@ -1,4 +1,7 @@
 [rss]
 urls = [ "http://example.com/rss.xml" ]
 
-[
+[db]
+path = "indieweb.db"
+
+[tw
