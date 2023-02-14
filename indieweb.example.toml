@@ -5,4 +5,4 @@ urls = [ "http://example.com/rss.xml" ]
 path = "indieweb.db"
 
 [twitter]
-# only the client id i
+# only the client id is required here, access and resf
