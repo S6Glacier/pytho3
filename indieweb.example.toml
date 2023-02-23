@@ -10,4 +10,5 @@ path = "indieweb.db"
 client_id = "your_client_id..."
 
 [mastodon]
-base_uri = "http://your-mastodon-instanc
+base_uri = "http://your-mastodon-instance.example.com"
+access_t
