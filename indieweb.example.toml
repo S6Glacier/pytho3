@@ -11,4 +11,5 @@ client_id = "your_client_id..."
 
 [mastodon]
 base_uri = "http://your-mastodon-instance.example.com"
-access_t
+access_token = "your_access_token..."
+
