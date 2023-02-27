@@ -13,3 +13,5 @@ client_id = "your_client_id..."
 base_uri = "http://your-mastodon-instance.example.com"
 access_token = "your_access_token..."
 
+[url_shortener]
+protocol =
