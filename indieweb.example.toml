@@ -14,4 +14,5 @@ base_uri = "http://your-mastodon-instance.example.com"
 access_token = "your_access_token..."
 
 [url_shortener]
-protocol =
+protocol = "https"
+domain = "short.domain"
